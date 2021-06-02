@@ -8,7 +8,7 @@
 @php
     $attributes = $attributes->class([
         'dropdown-item',
-        'active' => $href = $attributes->get('href', $route ? route($route) : ($url ? url($url) : null)) == Request::url(),
+        'active' => ($href = $attributes->get('href', $route ? route($route) : ($url ? url($url) : null))) == Request::url(),
     ])->merge([
         'href' => $href,
     ]);

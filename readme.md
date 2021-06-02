@@ -231,7 +231,7 @@ A Bootstrap 5 dropdown:
 <x-bs::dropdown
     color="primary"
     size="lg"
-    :toggleIcon="true"
+    :toggleIcon="false"
     icon="filter"
     :label="__('Filter')"
     justify="end">
@@ -345,7 +345,7 @@ A Bootstrap 5 nav dropdown:
 
 ```html
 <x-bs::nav-dropdown
-    :toggleIcon="true"
+    :toggleIcon="false"
     icon="user-circle"
     :label="Auth::user()->name"
     justify="end">

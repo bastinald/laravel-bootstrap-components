@@ -1,7 +1,7 @@
 @props([
     'color' => 'primary',
     'size' => null,
-    'toggleIcon' => false,
+    'toggleIcon' => true,
     'icon' => null,
     'label' => null,
     'justify' => null,

@@ -8,7 +8,7 @@
 @php
     $attributes = $attributes->class([
         'nav-link',
-        'active' => $href = $attributes->get('href', $route ? route($route) : ($url ? url($url) : '#')) == Request::url(),
+        'active' => ($href = $attributes->get('href', $route ? route($route) : ($url ? url($url) : '#'))) == Request::url(),
     ])->merge([
         'href' => $href,
     ]);

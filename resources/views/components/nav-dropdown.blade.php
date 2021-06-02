@@ -1,5 +1,5 @@
 @props([
-    'toggleIcon' => false,
+    'toggleIcon' => true,
     'icon' => null,
     'label' => null,
     'justify' => null,
