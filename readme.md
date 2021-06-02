@@ -4,6 +4,30 @@ Laravel Bootstrap 5 Blade components. This package contains a set of useful Boot
 
 This package also comes with a handy `install:bs` command which allows you to quickly add Bootstrap 5 and your favorite font icon library to your Laravel project. The install command creates and configures your resource files, NPM packages, and Laravel Mix methods, so NPM is required to run it.
 
+### Documentation
+
+- [Installation](#installation)
+- [Components](#components)
+    - [Alert](#alert)
+    - [Badge](#badge)
+    - [Button](#button)
+    - [Check](#check)
+    - [Close](#close)
+    - [Color](#color)
+    - [Datalist](#datalist)
+    - [Dropdown](#dropdown)
+    - [Dropdown Item](#dropdown-item)
+    - [Icon](#icon)
+    - [Input](#input)
+    - [Nav Dropdown](#nav-dropdown)
+    - [Nav Item](#nav-item)
+    - [Pagination](#pagination)
+    - [Progress](#progress)
+    - [Radio](#radio)
+    - [Select](#select)
+    - [Textarea](#textarea)
+- [Publishing Components](#publishing-components)
+
 ## Installation
 
 Require the package via composer:
@@ -40,6 +64,8 @@ A Bootstrap 5 alert:
 - `message`: the message to display, can also be placed in the `slot`
 - `dismissable`: sets the alert to be dismissable or not
 
+---
+
 ### Badge
 
 A Bootstrap 5 badge:
@@ -57,6 +83,8 @@ A Bootstrap 5 badge:
 - `color`: a Bootstrap 5 color e.g. `primary`, `danger`, `success`
 - `icon`: an icon to display before the label e.g. `check`, `times`
 - `label`: the label to display, can also be placed in the `slot`
+
+---
 
 ### Button
 
@@ -88,6 +116,8 @@ A Bootstrap 5 button:
 
 Add a `type` attribute to your button in order to make it a standard `button`. To make your button a link, specify a `route`, `url`, or `href` for it to use.
 
+---
+
 ### Check
 
 A Bootstrap 5 checkbox input:
@@ -113,6 +143,8 @@ A Bootstrap 5 checkbox input:
 
 Along with all other input components of this package, error feedback will show up if a current error was found for the input `name`, or `wire:model*` attribute.
 
+---
+
 ### Close
 
 A Bootstrap 5 close button:
@@ -128,6 +160,8 @@ A Bootstrap 5 close button:
 
 - `color`: a Bootstrap 5 close button color e.g. `white`
 - `dismiss`: a `data-bs-dismiss` value e.g. `modal`
+
+---
 
 ### Color
 
@@ -155,6 +189,8 @@ A Bootstrap 5 color picker input:
 - `appendIcon`: an icon to display after the input e.g. `check`, `times`
 - `appendLabel`: a label to display after the input
 - `help`: the helper text to display under the input
+
+---
 
 ### Datalist
 
@@ -184,6 +220,8 @@ A Bootstrap 5 datalist input:
 - `appendLabel`: a label to display after the input
 - `options`: an array of options for the input e.g. `['Red', 'Blue']`
 - `help`: the helper text to display under the input
+
+---
 
 ### Dropdown
 
@@ -222,6 +260,8 @@ A Bootstrap 5 dropdown:
 - `justify`: the justification for the dropdown menu e.g. `start`, `end`
 - `slot`: the dropdown menu items
 
+---
+
 ### Dropdown Item
 
 A Bootstrap 5 dropdown menu item:
@@ -246,6 +286,8 @@ A Bootstrap 5 dropdown menu item:
 
 Dropdown items can be buttons or links. This logic works the same as a `button` component. So specify a button `type`, `route`, `url`, or `href` to use.
 
+---
+
 ### Icon
 
 A font icon using your preferred library:
@@ -265,6 +307,8 @@ A font icon using your preferred library:
 #### Notes
 
 See the documentation for your preferred icon font library. If you need to change your icon library, you can publish the package config file in order to change the `icon_class_prefix` from `fal fa-fw fa-` to whatever is required. The `install:bs` command already takes care of this for you if you chose an icon library during installation.
+
+---
 
 ### Input
 
@@ -292,6 +336,8 @@ A Bootstrap 5 text input:
 - `appendIcon`: an icon to display after the input e.g. `check`, `times`
 - `appendLabel`: a label to display after the input
 - `help`: the helper text to display under the input
+
+---
 
 ### Nav Dropdown
 
@@ -326,6 +372,8 @@ A Bootstrap 5 nav dropdown:
 - `justify`: the justification for the dropdown menu e.g. `start`, `end`
 - `slot`: the dropdown menu items
 
+---
+
 ### Nav Item
 
 A Bootstrap 5 nav menu item:
@@ -346,6 +394,8 @@ A Bootstrap 5 nav menu item:
 - `route`: sets a route for the `href` attribute to use
 - `url`: sets a URL for the `href` attribute to use
 
+---
+
 ### Pagination
 
 Responsive Bootstrap 5 pagination links:
@@ -365,6 +415,8 @@ Responsive Bootstrap 5 pagination links:
 #### Notes
 
 If you are using this inside of a Livewire component, the package is smart enough to use the Livewire pagination views. Just make sure your Livewire component is using the `WithPagination` trait. This component is also responsive, so it will show simple previous/next links on mobile, and full numbered links on desktop.
+
+---
 
 ### Progress
 
@@ -390,6 +442,8 @@ A Bootstrap 5 progress bar:
 - `percent`: sets the percentage for the progress bar
 - `label`: the label to display inside the progress bar
 
+---
+
 ### Radio
 
 A Bootstrap 5 radio input:
@@ -414,6 +468,8 @@ A Bootstrap 5 radio input:
 #### Notes
 
 The `options` can be an indexed or associative array. If the array is associative, the array keys will be used for the option values, and the array values will be used for the option labels. This works the same for the `select` component.
+
+---
 
 ### Select
 
@@ -451,6 +507,8 @@ A Bootstrap 5 select input:
 #### Notes
 
 The `options` prop works the same as a `radio`. So you can specify an indexed or associative array, and the options will use the keys and/or values accordingly.
+
+---
 
 ### Textarea
 
