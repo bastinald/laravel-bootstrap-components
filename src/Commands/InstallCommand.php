@@ -33,7 +33,7 @@ class InstallCommand extends Command
 
     protected function determineIconLibrary()
     {
-        $iconLibrary = $this->choice('What icon library do you use?', [
+        $iconLibrary = $this->choice('Which icon library do you use?', [
             'Bootstrap Icons',
             'Font Awesome Free',
             'Font Awesome Pro (requires global NPM token to be configured)',
