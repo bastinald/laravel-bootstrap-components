@@ -1,10 +1,10 @@
 @props([
-    'label' => null,
-    'size' => null,
     'prependIcon' => null,
     'prependLabel' => null,
     'appendIcon' => null,
     'appendLabel' => null,
+    'label' => null,
+    'size' => null,
     'errorKey' => $attributes->get('name', Str::replaceFirst('model.', '', $attributes->whereStartsWith('wire:model')->first())),
     'help' => null,
 ])

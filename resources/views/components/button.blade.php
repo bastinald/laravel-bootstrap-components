@@ -1,8 +1,8 @@
 @props([
-    'color' => 'primary',
-    'size' => null,
     'icon' => null,
     'label' => null,
+    'color' => 'primary',
+    'size' => null,
     'route' => null,
     'url' => null,
     'toggle' => null,

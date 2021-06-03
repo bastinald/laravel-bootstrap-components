@@ -1,8 +1,8 @@
 @props([
     'name' => null,
-    'color' => null,
     'style' => config('laravel-bootstrap-components.font_awesome_style'),
     'size' => null,
+    'color' => null,
     'spin' => false,
     'pulse' => false,
 ])

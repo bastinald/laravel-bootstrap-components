@@ -1,7 +1,7 @@
 @props([
-    'color' => 'primary',
     'icon' => null,
     'label' => null,
+    'color' => 'primary',
 ])
 
 @php

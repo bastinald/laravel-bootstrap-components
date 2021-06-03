@@ -1,10 +1,10 @@
 @props([
+    'percent' => 0,
+    'label' => null,
+    'color' => 'primary',
     'height' => null,
     'striped' => false,
     'animated' => false,
-    'color' => 'primary',
-    'percent' => 0,
-    'label' => null,
 ])
 
 @php

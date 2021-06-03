@@ -1,7 +1,7 @@
 @props([
-    'color' => 'primary',
     'icon' => null,
     'message' => null,
+    'color' => 'primary',
     'dismissible' => false,
 ])
 
