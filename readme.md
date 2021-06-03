@@ -460,7 +460,7 @@ A Bootstrap 5 radio input:
 <x-bs::radio
     :label="__('Gender')"
     :switch="true"
-    :options="['Male', 'Female', 'Apache Attack Helicopter']"
+    :options="['Male', 'Female', 'Other']"
     :help="__('Please select your gender.')"
     wire:model.defer="gender"
 />
