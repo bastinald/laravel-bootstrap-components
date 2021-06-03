@@ -40,7 +40,7 @@ class InstallCommand extends Command
             $this->fontAwesomeStyle = 'solid';
         } else {
             $this->fontAwesomeVersion = 'pro';
-            $this->fontAwesomeStyle = 'light';
+            $this->fontAwesomeStyle = 'regular';
         }
     }
 

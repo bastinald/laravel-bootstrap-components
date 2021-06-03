@@ -2,6 +2,6 @@
 
 return [
 
-    'font_awesome_style' => 'light',
+    'font_awesome_style' => 'regular',
 
 ];

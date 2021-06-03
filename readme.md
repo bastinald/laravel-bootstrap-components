@@ -307,14 +307,14 @@ A Font Awesome icon:
 
 - `name`: Font Awesome icon name e.g. `cog`, `user`
 - `color`: Bootstrap 5 color e.g. `primary`, `danger`, `success`
-- `style`: Font Awesome style e.g. `solid`, `light`, `brands`
+- `style`: Font Awesome style e.g. `solid`, `regular`, `brands`
 - `size`: Font Awesome icon size e.g. `sm`, `lg`, `3x`
 - `spin`: set the icon to use a spin animation
 - `pulse`: set the icon to use a pulse animation
 
 #### Notes
 
-If you need to change the global Font Awesome icon style used by other components, you can publish the package config file and change `font_awesome_style` to whatever is required. The `install:bs` command will use `solid` for free, and `light` for pro by default. Please note that installing the pro version requires [a global NPM token to be added](https://fontawesome.com/v5.15/how-to-use/on-the-web/setup/using-package-managers#installing-pro).
+If you need to change the global Font Awesome icon style used by other components, you can publish the package config file and change `font_awesome_style` to whatever is required. The `install:bs` command will use `solid` for free, and `regular` for pro by default. Please note that installing the pro version requires [a global NPM token to be added](https://fontawesome.com/v5.15/how-to-use/on-the-web/setup/using-package-managers#installing-pro).
 
 ---
 
