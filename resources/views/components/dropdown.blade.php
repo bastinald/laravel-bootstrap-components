@@ -18,7 +18,7 @@
     ]);
 @endphp
 
-<div class="dropdown">
+<div class="dropdown d-inline-block">
     <button {{ $attributes }}>
         @if($icon)
             <x-bs::icon :name="$icon"/>
