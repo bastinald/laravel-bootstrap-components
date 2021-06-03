@@ -71,7 +71,7 @@ class InstallCommand extends Command
     {
         $this->appendFileContent(resource_path('js/app.js'), [
             "require('@popperjs/core');",
-            "require('bootstrap');",
+            "window.bootstrap = require('bootstrap');",
         ]);
 
         $this->appendFileContent(resource_path('scss/app.scss'), [
