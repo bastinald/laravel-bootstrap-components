@@ -33,7 +33,7 @@ class InstallCommand extends Command
         $fontAwesomeVersion = $this->choice('Which version of Font Awesome?', [
             'Free',
             'Pro (requires global NPM token to be configured)',
-        ], 1);
+        ]);
 
         if ($fontAwesomeVersion == 'Free') {
             $this->fontAwesomeVersion = 'free';
