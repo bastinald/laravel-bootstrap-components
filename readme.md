@@ -1,8 +1,8 @@
 # Laravel Bootstrap Components
 
-Laravel Bootstrap 5 Blade components. This package contains a set of useful Bootstrap 5 Laravel Blade components which you can use inside your projects. It promotes DRY principles and allows you to keep your HTML nice and clean. Components include alerts, badges, buttons, form inputs (with automatic error feedback), dropdowns, navs, pagination (responsive), and more. The components come with full Laravel Livewire integration built in, so you can use them with or without Livewire.
+Laravel Bootstrap 5 Blade components. This package contains a set of useful Bootstrap 5 Laravel Blade components which you can use inside your projects. It promotes DRY principles and allows you to keep your HTML nice and clean. Components include alerts, badges, buttons, form inputs (with automatic error feedback), dropdowns, icons (Font Awesome), navs, pagination (responsive), and more. The components come with full Laravel Livewire integration built in, so you can use them with or without Livewire.
 
-This package also comes with a handy `install:bs` command which allows you to quickly add Bootstrap 5 and your favorite font icon library to your Laravel project. The install command creates and configures your resource files, NPM packages, and Laravel Mix methods, so NPM is required to run it.
+This package also comes with a handy `install:bs` command which allows you to quickly add Bootstrap 5 and Font Awesome 5 (free or pro) to your Laravel project. The install command creates and configures your resource files, NPM packages, and Laravel Mix methods, so NPM is required to run it.
 
 ### Documentation
 
@@ -59,8 +59,8 @@ A Bootstrap 5 alert:
 
 #### Available Props
 
-- `color`: a Bootstrap 5 color e.g. `primary`, `danger`, `success`
-- `icon`: an icon to display before the message e.g. `check`, `times`
+- `color`: Bootstrap 5 color e.g. `primary`, `danger`, `success`
+- `icon`: Font Awesome icon to display before the message e.g. `check`, `times`
 - `message`: the message to display, can also be placed in the `slot`
 - `dismissable`: sets the alert to be dismissable or not
 
@@ -80,8 +80,8 @@ A Bootstrap 5 badge:
 
 #### Available Props
 
-- `color`: a Bootstrap 5 color e.g. `primary`, `danger`, `success`
-- `icon`: an icon to display before the label e.g. `check`, `times`
+- `color`: Bootstrap 5 color e.g. `primary`, `danger`, `success`
+- `icon`: Font Awesome icon to display before the label e.g. `check`, `times`
 - `label`: the label to display, can also be placed in the `slot`
 
 ---
@@ -104,9 +104,9 @@ A Bootstrap 5 button:
 
 #### Available Props
 
-- `color`: a Bootstrap 5 color e.g. `primary`, `danger`, `success`
+- `color`: Bootstrap 5 color e.g. `primary`, `danger`, `success`
 - `size`: the size of the button e.g. `sm`, `lg`
-- `icon`: an icon to display before the label e.g. `check`, `times`
+- `icon`: Font Awesome icon to display before the label e.g. `check`, `times`
 - `label`: the label to display, can also be placed in the `slot`
 - `route`: sets a route for the `href` attribute to use
 - `url`: sets a URL for the `href` attribute to use
@@ -184,9 +184,9 @@ A Bootstrap 5 color picker input:
 
 - `label`: the label to display above the input
 - `size`: the size of the input e.g. `sm`, `lg`
-- `prependIcon`: an icon to display before the input e.g. `check`, `times`
+- `prependIcon`: Font Awesome icon to display before the input e.g. `check`, `times`
 - `prependLabel`: a label to display before the input
-- `appendIcon`: an icon to display after the input e.g. `check`, `times`
+- `appendIcon`: Font Awesome icon to display after the input e.g. `check`, `times`
 - `appendLabel`: a label to display after the input
 - `help`: the helper text to display under the input
 
@@ -214,9 +214,9 @@ A Bootstrap 5 datalist input:
 
 - `label`: the label to display above the input
 - `size`: the size of the input e.g. `sm`, `lg`
-- `prependIcon`: an icon to display before the input e.g. `check`, `times`
+- `prependIcon`: Font Awesome icon to display before the input e.g. `check`, `times`
 - `prependLabel`: a label to display before the input
-- `appendIcon`: an icon to display after the input e.g. `check`, `times`
+- `appendIcon`: Font Awesome icon to display after the input e.g. `check`, `times`
 - `appendLabel`: a label to display after the input
 - `options`: an array of options for the input e.g. `['Red', 'Blue']`
 - `help`: the helper text to display under the input
@@ -255,7 +255,7 @@ A Bootstrap 5 dropdown:
 - `color`: a Bootstrap 5 color e.g. `primary`, `danger`, `success`
 - `size`: the size of the dropdown button e.g. `sm`, `lg`
 - `toggleIcon`: sets if it should display the toggle arrow icon
-- `icon`: an icon to display before the label e.g. `check`, `times`
+- `icon`: Font Awesome icon to display before the label e.g. `check`, `times`
 - `label`: the dropdown button label to display
 - `justify`: the justification for the dropdown menu e.g. `start`, `end`
 - `slot`: the dropdown menu items
@@ -277,7 +277,7 @@ A Bootstrap 5 dropdown menu item:
 
 #### Available Props
 
-- `icon`: an icon to display before the label e.g. `check`, `times`
+- `icon`: Font Awesome icon to display before the label e.g. `check`, `times`
 - `label`: the label to display, can also be placed in the `slot`
 - `route`: sets a route for the `href` attribute to use
 - `url`: sets a URL for the `href` attribute to use
@@ -290,23 +290,31 @@ Dropdown items can be buttons or links. This logic works the same as a `button` 
 
 ### Icon
 
-A font icon using your preferred library:
+A Font Awesome icon:
 
 ```html
 <x-bs::icon
     name="cog"
     color="dark"
+    style="light"
+    size="lg"
+    :spin="false"
+    :pulse="false"
 />
 ```
 
 #### Available Props
 
-- `name`: the name of the icon from the library e.g. `cog`, `user`
-- `color`: a Bootstrap 5 color e.g. `primary`, `danger`, `success`
+- `name`: Font Awesome icon name e.g. `cog`, `user`
+- `color`: Bootstrap 5 color e.g. `primary`, `danger`, `success`
+- `style`: Font Awesome style e.g. `solid`, `light`, `brands`
+- `size`: Font Awesome icon size e.g. `sm`, `lg`, `3x`
+- `spin`: set the icon to use a spin animation
+- `pulse`: set the icon to use a pulse animation
 
 #### Notes
 
-See the documentation for your preferred icon font library. If you need to change your icon library, you can publish the package config file in order to change the `icon_class_prefix` from `fal fa-fw fa-` to whatever is required. The `install:bs` command already takes care of this for you if you chose an icon library during installation.
+If you need to change the global Font Awesome icon style used by other components, you can publish the package config file and change `font_awesome_style` to whatever is required. The `install:bs` command will use `solid` for free, and `light` for pro by default.
 
 ---
 
@@ -331,9 +339,9 @@ A Bootstrap 5 text input:
 
 - `label`: the label to display above the input
 - `size`: the size of the input e.g. `sm`, `lg`
-- `prependIcon`: an icon to display before the input e.g. `check`, `times`
+- `prependIcon`: Font Awesome icon to display before the input e.g. `check`, `times`
 - `prependLabel`: a label to display before the input
-- `appendIcon`: an icon to display after the input e.g. `check`, `times`
+- `appendIcon`: Font Awesome icon to display after the input e.g. `check`, `times`
 - `appendLabel`: a label to display after the input
 - `help`: the helper text to display under the input
 
@@ -367,7 +375,7 @@ A Bootstrap 5 nav dropdown:
 #### Available Props
 
 - `toggleIcon`: sets if it should display the toggle arrow icon
-- `icon`: an icon to display before the label e.g. `check`, `times`
+- `icon`: Font Awesome icon to display before the label e.g. `check`, `times`
 - `label`: the dropdown button label to display
 - `justify`: the justification for the dropdown menu e.g. `start`, `end`
 - `slot`: the dropdown menu items
@@ -389,7 +397,7 @@ A Bootstrap 5 nav menu item:
 
 #### Available Props
 
-- `icon`: an icon to display before the label e.g. `check`, `times`
+- `icon`: Font Awesome icon to display before the label e.g. `check`, `times`
 - `label`: the label to display, can also be placed in the `slot`
 - `route`: sets a route for the `href` attribute to use
 - `url`: sets a URL for the `href` attribute to use
@@ -495,9 +503,9 @@ A Bootstrap 5 select input:
 
 - `label`: the label to display above the input
 - `size`: the size of the input e.g. `sm`, `lg`
-- `prependIcon`: an icon to display before the input e.g. `check`, `times`
+- `prependIcon`: Font Awesome icon to display before the input e.g. `check`, `times`
 - `prependLabel`: a label to display before the input
-- `appendIcon`: an icon to display after the input e.g. `check`, `times`
+- `appendIcon`: Font Awesome icon to display after the input e.g. `check`, `times`
 - `appendLabel`: a label to display after the input
 - `placeholder`: a placeholder to use for a blank first option
 - `blankOption`: include a blank first option for the input
@@ -531,9 +539,9 @@ A Bootstrap 5 textarea input:
 
 - `label`: the label to display above the input
 - `size`: the size of the input e.g. `sm`, `lg`
-- `prependIcon`: an icon to display before the input e.g. `check`, `times`
+- `prependIcon`: Font Awesome icon to display before the input e.g. `check`, `times`
 - `prependLabel`: a label to display before the input
-- `appendIcon`: an icon to display after the input e.g. `check`, `times`
+- `appendIcon`: Font Awesome icon to display after the input e.g. `check`, `times`
 - `appendLabel`: a label to display after the input
 - `help`: the helper text to display under the input
 

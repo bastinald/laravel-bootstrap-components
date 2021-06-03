@@ -2,6 +2,6 @@
 
 return [
 
-    'icon_class_prefix' => 'fal fa-fw fa-',
+    'font_awesome_style' => 'light',
 
 ];

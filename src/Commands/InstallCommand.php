@@ -9,16 +9,13 @@ use Illuminate\Support\Str;
 class InstallCommand extends Command
 {
     protected $signature = 'install:bs';
-    protected $filesystem;
-    protected $iconScss = null;
-    protected $iconJson = [];
-    protected $iconConfig = null;
+    protected $filesystem, $fontAwesomeVersion, $fontAwesomeStyle;
 
     public function handle()
     {
         $this->filesystem = new Filesystem;
 
-        $this->determineIconLibrary();
+        $this->determineFontAwesomeVersion();
         $this->ensureResourceFilesExist();
         $this->appendResourceFileContents();
         $this->addNpmPackages();
@@ -31,27 +28,19 @@ class InstallCommand extends Command
         $this->info('Bootstrap installed!');
     }
 
-    protected function determineIconLibrary()
+    protected function determineFontAwesomeVersion()
     {
-        $iconLibrary = $this->choice('Which icon library do you use?', [
-            'Bootstrap Icons',
-            'Font Awesome Free',
-            'Font Awesome Pro (requires global NPM token to be configured)',
-            'None',
-        ], 3);
+        $fontAwesomeVersion = $this->choice('Which version of Font Awesome?', [
+            'Free',
+            'Pro (requires global NPM token to be configured)',
+        ], 1);
 
-        if ($iconLibrary == 'Bootstrap Icons') {
-            $this->iconScss = "@import '~bootstrap-icons/font/bootstrap-icons.css';";
-            $this->iconJson['bootstrap-icons'] = '^1.5.0';
-            $this->iconConfig = 'bi bi-';
-        } else if ($iconLibrary == 'Font Awesome Free') {
-            $this->iconScss = "@import '~@fortawesome/fontawesome-free/css/all.css';";
-            $this->iconJson['@fortawesome/fontawesome-free'] = '^5.15.3';
-            $this->iconConfig = 'fas fa-fw fa-';
-        } else if ($iconLibrary == 'Font Awesome Pro (requires global NPM token to be configured)') {
-            $this->iconScss = "@import '~@fortawesome/fontawesome-pro/css/all.css';";
-            $this->iconJson['@fortawesome/fontawesome-pro'] = '^5.15.3';
-            $this->iconConfig = 'fal fa-fw fa-';
+        if ($fontAwesomeVersion == 'Free') {
+            $this->fontAwesomeVersion = 'free';
+            $this->fontAwesomeStyle = 'solid';
+        } else {
+            $this->fontAwesomeVersion = 'pro';
+            $this->fontAwesomeStyle = 'light';
         }
     }
 
@@ -77,7 +66,7 @@ class InstallCommand extends Command
         $this->appendFileContent(resource_path('scss/app.scss'), [
             "@import 'variables';",
             "@import '~bootstrap/scss/bootstrap';",
-            $this->iconScss,
+            "@import '~@fortawesome/fontawesome-" . $this->fontAwesomeVersion . "/css/all.css';",
         ]);
     }
 
@@ -101,13 +90,14 @@ class InstallCommand extends Command
 
     protected function addNpmPackages()
     {
-        $packages = array_merge([
+        $packages = [
+            '@fortawesome/fontawesome-' . $this->fontAwesomeVersion => '^5.15.3',
             '@popperjs/core' => '^2.9.2',
             'bootstrap' => '^5.0.0-beta3',
             'resolve-url-loader' => '^3.1.3',
             'sass' => '1.32.13',
             'sass-loader' => '^11.1.1',
-        ], $this->iconJson);
+        ];
 
         $file = base_path('package.json');
         $json = json_decode($this->filesystem->get($file), true);
@@ -141,11 +131,15 @@ class InstallCommand extends Command
 
     public function publishConfigFile()
     {
-        $iconConfig = config('laravel-bootstrap-components.icon_class_prefix');
+        $fontAwesomeStyle = config('laravel-bootstrap-components.font_awesome_style');
 
-        if ($this->iconConfig && $this->iconConfig != $iconConfig) {
+        if ($fontAwesomeStyle != $this->fontAwesomeStyle) {
             $file = __DIR__ . '/../../config/laravel-bootstrap-components.php';
-            $contents = Str::replace($iconConfig, $this->iconConfig, $this->filesystem->get($file));
+            $contents = Str::replace(
+                "'font_awesome_style' => '$fontAwesomeStyle'",
+                "'font_awesome_style' => '$this->fontAwesomeStyle'",
+                $this->filesystem->get($file)
+            );
 
             $this->filesystem->put(config_path('laravel-bootstrap-components.php'), $contents);
         }
