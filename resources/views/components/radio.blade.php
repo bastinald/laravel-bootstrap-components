@@ -1,36 +1,40 @@
 @props([
     'label' => null,
-    'switch' => false,
     'options' => [],
-    'errorKey' => $attributes->get('name', Str::replaceFirst('model.', '', $attributes->whereStartsWith('wire:model')->first())),
     'help' => null,
+    'switch' => false,
 ])
 
 @php
+    $model = $attributes->whereStartsWith('wire:model')->first();
+    $key = $attributes->get('name', $model);
+    $id = $attributes->get('id', $model);
+    $options = Arr::isAssoc($options) ? $options : array_combine($options, $options);
+
     $attributes = $attributes->class([
         'form-check-input',
-        'is-invalid' => $errors->has($errorKey),
+        'is-invalid' => $errors->has($key),
     ])->merge([
-        'name' => $errorKey,
         'type' => 'radio',
+        'name' => $key,
     ]);
 @endphp
 
-<div class="mb-3">
+<div>
     <x-bs::label :label="$label"/>
 
-    @foreach(Arr::isAssoc($options) ? $options : array_combine($options, $options) as $optionValue => $optionLabel)
+    @foreach($options as $optionValue => $optionLabel)
         <div class="form-check {{ $switch ? 'form-switch' : '' }}">
-            @php($optionId = $attributes->get('id', $errorKey) . '.' . $loop->index)
+            @php($optionId = $id . '_' . $loop->index)
 
             <input {{ $attributes->merge(['id' => $optionId, 'value' => $optionValue]) }}>
 
             <x-bs::check-label :for="$optionId" :label="$optionLabel"/>
 
             @if($loop->last)
-                <x-bs::error :key="$errorKey"/>
+                <x-bs::error :key="$key"/>
 
-                <x-bs::help :message="$help"/>
+                <x-bs::help :label="$help"/>
             @endif
         </div>
     @endforeach

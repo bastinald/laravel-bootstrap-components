@@ -1,23 +1,25 @@
 @props([
-    'percent' => 0,
     'label' => null,
+    'percent' => 0,
     'color' => 'primary',
     'height' => null,
-    'striped' => false,
     'animated' => false,
+    'striped' => false,
 ])
 
 @php
     $attributes = $attributes->class([
-        'progress',
+        'progress-bar',
+        'progress-bar-animated' => $animated,
+        'progress-bar-striped' => $striped,
+        'bg-' . $color => $color,
     ])->merge([
-        'style' => $height ? 'height: ' . $height . 'px;' : null,
+        'style' => 'width: ' . $percent . '%',
     ]);
 @endphp
 
-<div {{ $attributes }}>
-    <div class="progress-bar {{ $striped ? 'progress-bar-striped' : '' }} {{ $animated ? 'progress-bar-animated' : '' }} bg-{{ $color }}"
-        style="width: {{ $percent }}%;">
+<div class="progress mb-0" style="{{ $height ? 'height: ' . $height . 'px;' : '' }}">
+    <div {{ $attributes }}>
         {{ $label ?? $slot }}
     </div>
 </div>

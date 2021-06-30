@@ -1,17 +1,14 @@
 @props([
-    'icon' => null,
-    'toggleIcon' => true,
     'label' => null,
+    'items' => null,
     'color' => 'primary',
     'size' => null,
-    'justify' => null,
 ])
 
 @php
     $attributes = $attributes->class([
-        'btn btn-' . $color,
+        'btn btn-' . $color . ' dropdown-toggle',
         'btn-' . $size => $size,
-        'dropdown-toggle' => $toggleIcon,
     ])->merge([
         'type' => 'button',
         'data-bs-toggle' => 'dropdown',
@@ -20,13 +17,10 @@
 
 <div class="dropdown d-inline-block">
     <button {{ $attributes }}>
-        @if($icon)
-            <x-bs::icon :name="$icon"/>
-        @endif
-
         {{ $label }}
     </button>
-    <ul class="dropdown-menu {{ $justify ? 'dropdown-menu-' . $justify : '' }}">
-        {{ $slot }}
-    </ul>
+
+    <div class="dropdown-menu">
+        {{ $items ?? $slot }}
+    </div>
 </div>

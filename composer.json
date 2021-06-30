@@ -1,7 +1,7 @@
 {
     "name": "bastinald/laravel-bootstrap-components",
     "homepage": "https://github.com/bastinald/laravel-bootstrap-components",
-    "description": "Laravel Bootstrap 5 Blade components.",
+    "description": "Laravel Bootstrap Blade components.",
     "license": "MIT",
     "authors": [
         {

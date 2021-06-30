@@ -1,48 +1,47 @@
 @props([
-    'prependIcon' => null,
-    'prependLabel' => null,
-    'appendIcon' => null,
-    'appendLabel' => null,
     'label' => null,
-    'size' => null,
     'placeholder' => null,
-    'blankOption' => false,
     'options' => [],
-    'errorKey' => $attributes->get('name', Str::replaceFirst('model.', '', $attributes->whereStartsWith('wire:model')->first())),
+    'prepend' => null,
+    'append' => null,
+    'size' => null,
     'help' => null,
 ])
 
 @php
+    $model = $attributes->whereStartsWith('wire:model')->first();
+    $key = $attributes->get('name', $model);
+    $id = $attributes->get('id', $model);
+    $options = Arr::isAssoc($options) ? $options : array_combine($options, $options);
+
     $attributes = $attributes->class([
         'form-select',
         'form-select-' . $size => $size,
-        'rounded-end' => !$appendIcon && !$appendLabel,
-        'is-invalid' => $errors->has($errorKey),
+        'rounded-end' => !$append,
+        'is-invalid' => $errors->has($key),
     ])->merge([
-        'id' => $id = $attributes->get('id', $errorKey),
+        'id' => $id,
     ]);
 @endphp
 
-<div class="mb-3">
+<div>
     <x-bs::label :for="$id" :label="$label"/>
 
     <div class="input-group">
-        <x-bs::input-addon :icon="$prependIcon" :label="$prependLabel"/>
+        <x-bs::input-addon :label="$prepend"/>
 
         <select {{ $attributes }}>
-            @if($placeholder || $blankOption)
-                <option value="">{{ $placeholder }}</option>
-            @endif
+            <option value="">{{ $placeholder }}</option>
 
-            @foreach(Arr::isAssoc($options) ? $options : array_combine($options, $options) as $optionValue => $optionLabel)
+            @foreach($options as $optionValue => $optionLabel)
                 <option value="{{ $optionValue }}">{{ $optionLabel }}</option>
             @endforeach
         </select>
 
-        <x-bs::input-addon :icon="$appendIcon" :label="$appendLabel" class="rounded-end"/>
+        <x-bs::input-addon :label="$append" class="rounded-end"/>
 
-        <x-bs::error :key="$errorKey"/>
+        <x-bs::error :key="$key"/>
     </div>
 
-    <x-bs::help :message="$help"/>
+    <x-bs::help :label="$help"/>
 </div>

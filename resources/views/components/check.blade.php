@@ -1,22 +1,25 @@
 @props([
     'label' => null,
     'checkLabel' => null,
-    'switch' => false,
-    'errorKey' => $attributes->get('name', Str::replaceFirst('model.', '', $attributes->whereStartsWith('wire:model')->first())),
     'help' => null,
+    'switch' => false,
 ])
 
 @php
+    $model = $attributes->whereStartsWith('wire:model')->first();
+    $key = $attributes->get('name', $model);
+    $id = $attributes->get('id', $model);
+
     $attributes = $attributes->class([
         'form-check-input',
-        'is-invalid' => $errors->has($errorKey),
+        'is-invalid' => $errors->has($key),
     ])->merge([
-        'id' => $id = $attributes->get('id', $errorKey),
         'type' => 'checkbox',
+        'id' => $id,
     ]);
 @endphp
 
-<div class="mb-3">
+<div>
     <x-bs::label :label="$label"/>
 
     <div class="form-check {{ $switch ? 'form-switch' : '' }}">
@@ -24,8 +27,8 @@
 
         <x-bs::check-label :for="$id" :label="$checkLabel"/>
 
-        <x-bs::error :key="$errorKey"/>
+        <x-bs::error :key="$key"/>
 
-        <x-bs::help :message="$help"/>
+        <x-bs::help :label="$help"/>
     </div>
 </div>

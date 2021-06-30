@@ -1,29 +1,23 @@
 @props([
-    'icon' => null,
-    'toggleIcon' => true,
     'label' => null,
-    'justify' => null,
+    'items' => null,
 ])
 
 @php
     $attributes = $attributes->class([
-        'nav-link',
-        'dropdown-toggle' => $toggleIcon,
+        'nav-link dropdown-toggle',
     ])->merge([
         'href' => '#',
         'data-bs-toggle' => 'dropdown',
     ]);
 @endphp
 
-<li class="nav-item dropdown">
+<div class="nav-item dropdown">
     <a {{ $attributes }}>
-        @if($icon)
-            <x-bs::icon :name="$icon"/>
-        @endif
-
         {{ $label }}
     </a>
-    <ul class="dropdown-menu {{ $justify ? 'dropdown-menu-' . $justify : '' }}">
-        {{ $slot }}
-    </ul>
-</li>
+
+    <div class="dropdown-menu">
+        {{ $items ?? $slot }}
+    </div>
+</div>

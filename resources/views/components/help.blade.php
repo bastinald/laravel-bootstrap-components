@@ -1,5 +1,5 @@
 @props([
-    'message' => null,
+    'label' => null,
 ])
 
 @php
@@ -10,8 +10,8 @@
     ]);
 @endphp
 
-@if($message || !$slot->isEmpty())
+@if($label || !$slot->isEmpty())
     <div {{ $attributes }}>
-        {{ $message ?? $slot }}
+        {{ $label ?? $slot }}
     </div>
 @endif

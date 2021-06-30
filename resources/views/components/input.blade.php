@@ -1,39 +1,45 @@
 @props([
-    'prependIcon' => null,
-    'prependLabel' => null,
-    'appendIcon' => null,
-    'appendLabel' => null,
     'label' => null,
+    'type' => 'text',
+    'prepend' => null,
+    'append' => null,
     'size' => null,
-    'errorKey' => $attributes->get('name', Str::replaceFirst('model.', '', $attributes->whereStartsWith('wire:model')->first())),
     'help' => null,
 ])
 
 @php
+    if ($type == 'number') $inputmode = 'decimal';
+    else if (in_array($type, ['tel', 'search', 'email', 'url'])) $inputmode = $type;
+    else $inputmode = 'text';
+
+    $model = $attributes->whereStartsWith('wire:model')->first();
+    $key = $attributes->get('name', $model);
+    $id = $attributes->get('id', $model);
+
     $attributes = $attributes->class([
         'form-control',
         'form-control-' . $size => $size,
-        'rounded-end' => !$appendIcon && !$appendLabel,
-        'is-invalid' => $errors->has($errorKey),
+        'rounded-end' => !$append,
+        'is-invalid' => $errors->has($key),
     ])->merge([
-        'id' => $id = $attributes->get('id', $errorKey),
-        'type' => $type = $attributes->get('type', 'text'),
-        'inputmode' => $type == 'number' ? 'numeric' : $type,
+        'type' => $type,
+        'inputmode' => $inputmode,
+        'id' => $id,
     ]);
 @endphp
 
-<div class="mb-3">
+<div>
     <x-bs::label :for="$id" :label="$label"/>
 
     <div class="input-group">
-        <x-bs::input-addon :icon="$prependIcon" :label="$prependLabel"/>
+        <x-bs::input-addon :label="$prepend"/>
 
         <input {{ $attributes }}>
 
-        <x-bs::input-addon :icon="$appendIcon" :label="$appendLabel" class="rounded-end"/>
+        <x-bs::input-addon :label="$append" class="rounded-end"/>
 
-        <x-bs::error :key="$errorKey"/>
+        <x-bs::error :key="$key"/>
     </div>
 
-    <x-bs::help :message="$help"/>
+    <x-bs::help :label="$help"/>
 </div>

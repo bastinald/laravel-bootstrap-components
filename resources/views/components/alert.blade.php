@@ -1,13 +1,12 @@
 @props([
-    'icon' => null,
-    'message' => null,
-    'color' => 'primary',
+    'label' => null,
+    'color' => 'success',
     'dismissible' => false,
 ])
 
 @php
     $attributes = $attributes->class([
-        'alert alert-' . $color . ' fade show',
+        'alert alert-' . $color . ' fade show mb-0',
         'alert-dismissible' => $dismissible,
     ])->merge([
         //
@@ -15,11 +14,7 @@
 @endphp
 
 <div {{ $attributes }}>
-    @if($icon)
-        <x-bs::icon :name="$icon"/>
-    @endif
-
-    {{ $message ?? $slot }}
+    {{ $label ?? $slot }}
 
     @if($dismissible)
         <x-bs::close dismiss="alert"/>

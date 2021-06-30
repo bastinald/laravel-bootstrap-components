@@ -1,5 +1,4 @@
 @props([
-    'icon' => null,
     'label' => null,
     'color' => 'primary',
 ])
@@ -13,9 +12,5 @@
 @endphp
 
 <span {{ $attributes }}>
-    @if($icon)
-        <x-bs::icon :name="$icon"/>
-    @endif
-
     {{ $label ?? $slot }}
 </span>

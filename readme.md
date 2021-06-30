@@ -1,11 +1,10 @@
 # Laravel Bootstrap Components
 
-Laravel Bootstrap 5 Blade components. This package contains a set of useful Bootstrap 5 Laravel Blade components which you can use inside your projects. It promotes DRY principles and allows you to keep your HTML nice and clean. Components include alerts, badges, buttons, form inputs (with automatic error feedback), dropdowns, icons (Font Awesome), navs, pagination (responsive), and more. The components come with full Laravel Livewire integration built in, so you can use them with or without Livewire.
-
-This package also comes with a handy `install:bs` command which allows you to quickly add Bootstrap 5 and Font Awesome 5 (free or pro) to your Laravel project. The install command creates and configures your resource files, NPM packages, and Laravel Mix methods, so NPM is required to run it.
+This package contains a set of useful Bootstrap Laravel Blade components. It promotes DRY principles and allows you to keep your HTML nice and clean. Components include alerts, badges, buttons, form inputs (with automatic error feedback), dropdowns, navs, pagination (responsive), and more. The components come with Laravel Livewire integration built in, so you can use them with or without Livewire.
 
 ### Documentation
 
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Components](#components)
     - [Alert](#alert)
@@ -17,16 +16,20 @@ This package also comes with a handy `install:bs` command which allows you to qu
     - [Datalist](#datalist)
     - [Dropdown](#dropdown)
     - [Dropdown Item](#dropdown-item)
-    - [Icon](#icon)
     - [Input](#input)
+    - [Link](#link)
     - [Nav Dropdown](#nav-dropdown)
-    - [Nav Item](#nav-item)
+    - [Nav Link](#nav-link)
     - [Pagination](#pagination)
     - [Progress](#progress)
     - [Radio](#radio)
     - [Select](#select)
     - [Textarea](#textarea)
 - [Publishing Components](#publishing-components)
+
+## Requirements
+
+- Bootstrap 5 must be installed via webpack first
 
 ## Installation
 
@@ -36,377 +39,307 @@ Require the package via composer:
 composer require bastinald/laravel-bootstrap-components
 ```
 
-If you need to install Bootstrap, run the install command (requires NPM):
-
-```console
-php artisan install:bs
-```
-
 ## Components
 
 ### Alert
 
-A Bootstrap 5 alert:
+A Bootstrap alert:
 
 ```html
 <x-bs::alert
-    color="success"
-    icon="check"
-    :message="__('It was successful!')"
-    :dismissible="true"
+    :label="__('It was successful!')"
+    color="info"
+    dismissible
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `color`: Bootstrap 5 color e.g. `primary`, `danger`, `success`
-- `icon`: Font Awesome icon to display before the message e.g. `check`, `times`
-- `message`: the message to display, can also be placed in the `slot`
-- `dismissable`: sets the alert to be dismissable or not
+- `label`: label to display, can also be placed in the `slot`
+- `color`: Bootstrap color e.g. `primary`, `danger`, `success`
+- `dismissible`: set the alert to be dismissible
 
 ---
 
 ### Badge
 
-A Bootstrap 5 badge:
+A Bootstrap badge:
 
 ```html
 <x-bs::badge
-    color="warning"
-    icon="check"
     :label="__('Pending')"
+    color="warning"
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `color`: Bootstrap 5 color e.g. `primary`, `danger`, `success`
-- `icon`: Font Awesome icon to display before the label e.g. `check`, `times`
-- `label`: the label to display, can also be placed in the `slot`
+- `label`: label to display, can also be placed in the `slot`
+- `color`: Bootstrap color e.g. `primary`, `danger`, `success`
 
 ---
 
 ### Button
 
-A Bootstrap 5 button:
+A Bootstrap button:
 
 ```html
 <x-bs::button
+    :label="__('Login')"
     color="primary"
     size="lg"
-    icon="check"
-    :label="__('Login')"
     route="login"
-    url="/login"
-    toggle="collapse"
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `color`: Bootstrap 5 color e.g. `primary`, `danger`, `success`
-- `size`: the size of the button e.g. `sm`, `lg`
-- `icon`: Font Awesome icon to display before the label e.g. `check`, `times`
-- `label`: the label to display, can also be placed in the `slot`
-- `route`: sets a route for the `href` attribute to use
-- `url`: sets a URL for the `href` attribute to use
+- `label`: label to display, can also be placed in the `slot`
+- `color`: Bootstrap color e.g. `primary`, `danger`, `success`
+- `size`: Bootstrap button size e.g. `sm`, `lg`
+- `route`: sets the `href` to a route
+- `url`: sets the `href` to a url
+- `href`: sets the `href`
+- `dismiss`: a `data-bs-dismiss` value e.g. `alert`, `modal`
 - `toggle`: a `data-bs-toggle` value e.g. `collapse`, `dropdown`
-
-#### Notes
-
-Add a `type` attribute to your button in order to make it a standard `button`. To make your button a link, specify a `route`, `url`, or `href` for it to use.
 
 ---
 
 ### Check
 
-A Bootstrap 5 checkbox input:
+A Bootstrap checkbox input:
 
 ```html
 <x-bs::check
     :label="__('Agree')"
     :checkLabel="__('I agree to the TOS')"
-    :switch="true"
     :help="__('Please accept the TOS.')"
+    switch
     wire:model.defer="agree"
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `label`: the label to display above the input
-- `checkLabel`: the label to display beside the input
-- `switch`: sets the input to use a switch style
-- `help`: the helper text to display under the input
-
-#### Notes
-
-Along with all other input components of this package, error feedback will show up if a current error was found for the input `name`, or `wire:model*` attribute.
+- `label`: label to display above the input
+- `checkLabel`: label to display beside the input
+- `help`: helper label to display under the input
+- `switch`: style the input as a switch
 
 ---
 
 ### Close
 
-A Bootstrap 5 close button:
+A Bootstrap close button:
 
 ```html
-<x-bs::close
-    color="white"
+<x-bs::close 
     dismiss="modal"
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `color`: a Bootstrap 5 close button color e.g. `white`
-- `dismiss`: a `data-bs-dismiss` value e.g. `modal`
+- `dismiss`: a `data-bs-dismiss` value e.g. `alert`, `modal`
 
 ---
 
 ### Color
 
-A Bootstrap 5 color picker input:
+A Bootstrap color picker input:
 
 ```html
 <x-bs::color
     :label="__('Favorite Color')"
-    size="sm"
-    prependIcon="palette"
-    :prependLabel="__('Palette')"
-    appendIcon="paint-brush"
-    :appendLabel="__('Paint')"
+    :prepend="__('I like')"
+    :append="_('the most.')"
     :help="__('Please pick a color.')"
     wire:model.defer="favorite_color"
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `label`: the label to display above the input
-- `size`: the size of the input e.g. `sm`, `lg`
-- `prependIcon`: Font Awesome icon to display before the input e.g. `check`, `times`
-- `prependLabel`: a label to display before the input
-- `appendIcon`: Font Awesome icon to display after the input e.g. `check`, `times`
-- `appendLabel`: a label to display after the input
-- `help`: the helper text to display under the input
+- `label`: label to display above the input
+- `prepend`: addon to display before input, can be used via named slot
+- `append`: addon to display after input, can be used via named slot
+- `size`: Bootstrap input size e.g. `sm`, `lg`
+- `help`: helper label to display under the input
 
 ---
 
 ### Datalist
 
-A Bootstrap 5 datalist input:
+A Bootstrap datalist input:
 
 ```html
 <x-bs::datalist
     :label="__('City Name')"
-    size="lg"
-    prependIcon="building"
-    :prependLabel="__('City')"
-    appendIcon="map-marker"
-    :appendLabel="__('Location')"
     :options="['Toronto', 'Montreal', 'Las Vegas']"
+    :prepend="__('I live in')"
+    :append="_('right now.')"
     :help="__('Please enter your city.')"
     wire:model.defer="city_name"
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `label`: the label to display above the input
-- `size`: the size of the input e.g. `sm`, `lg`
-- `prependIcon`: Font Awesome icon to display before the input e.g. `check`, `times`
-- `prependLabel`: a label to display before the input
-- `appendIcon`: Font Awesome icon to display after the input e.g. `check`, `times`
-- `appendLabel`: a label to display after the input
-- `options`: an array of options for the input e.g. `['Red', 'Blue']`
-- `help`: the helper text to display under the input
+- `label`: label to display above the input
+- `options`: array of input options e.g. `['Red', 'Blue']`
+- `prepend`: addon to display before input, can be used via named slot
+- `append`: addon to display after input, can be used via named slot
+- `size`: Bootstrap input size e.g. `sm`, `lg`
+- `help`: helper label to display under the input
 
 ---
 
 ### Dropdown
 
-A Bootstrap 5 dropdown:
+A Bootstrap dropdown:
 
 ```html
 <x-bs::dropdown
-    color="primary"
-    size="lg"
-    :toggleIcon="false"
-    icon="filter"
     :label="__('Filter')"
-    justify="end">
+    color="danger"
+>
     <x-bs::dropdown-item 
-        type="button"
-        icon="address-card" 
         :label="__('By Name')"
         wire:click="$set('filter', 'name')"
     />
     <x-bs::dropdown-item
-        type="button"
-        icon="calendar" 
         :label="__('By Age')"
         wire:click="$set('filter', 'age')"
     />
 </x-bs::dropdown>
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `color`: a Bootstrap 5 color e.g. `primary`, `danger`, `success`
-- `size`: the size of the dropdown button e.g. `sm`, `lg`
-- `toggleIcon`: sets if it should display the toggle arrow icon
-- `icon`: Font Awesome icon to display before the label e.g. `check`, `times`
-- `label`: the dropdown button label to display
-- `justify`: the justification for the dropdown menu e.g. `start`, `end`
-- `slot`: the dropdown menu items
+- `label`: dropdown label to display, can be used via named slot
+- `items`: dropdown items, can also be placed in the `slot`
+- `color`: Bootstrap color e.g. `primary`, `danger`, `success`
+- `size`: Bootstrap button size e.g. `sm`, `lg`
 
 ---
 
 ### Dropdown Item
 
-A Bootstrap 5 dropdown menu item:
+A Bootstrap dropdown menu item:
 
 ```html
 <x-bs::dropdown-item
-    icon="check"
     :label="__('Login')"
     route="login"
-    url="/login"
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `icon`: Font Awesome icon to display before the label e.g. `check`, `times`
-- `label`: the label to display, can also be placed in the `slot`
-- `route`: sets a route for the `href` attribute to use
-- `url`: sets a URL for the `href` attribute to use
-
-#### Notes
-
-Dropdown items can be buttons or links. This logic works the same as a `button` component. So specify a button `type`, `route`, `url`, or `href` to use.
-
----
-
-### Icon
-
-A Font Awesome icon:
-
-```html
-<x-bs::icon
-    name="cog"
-    color="dark"
-    style="light"
-    size="lg"
-    :spin="false"
-    :pulse="false"
-/>
-```
-
-#### Available Props
-
-- `name`: Font Awesome icon name e.g. `cog`, `user`
-- `color`: Bootstrap 5 color e.g. `primary`, `danger`, `success`
-- `style`: Font Awesome style e.g. `solid`, `regular`, `brands`
-- `size`: Font Awesome icon size e.g. `sm`, `lg`, `3x`
-- `spin`: set the icon to use a spin animation
-- `pulse`: set the icon to use a pulse animation
-
-#### Notes
-
-If you need to change the global Font Awesome icon style used by other components, you can publish the package config file and change `font_awesome_style` to whatever is required. The `install:bs` command will use `solid` for free, and `regular` for pro by default. Please note that installing the pro version requires [a global NPM token to be added](https://fontawesome.com/v5.15/how-to-use/on-the-web/setup/using-package-managers#installing-pro).
+- `label`: label to display, can also be placed in the `slot`
+- `route`: sets the `href` to a route
+- `url`: sets the `href` to a url
+- `href`: sets the `href`
 
 ---
 
 ### Input
 
-A Bootstrap 5 text input:
+A Bootstrap text input:
 
 ```html
 <x-bs::input
     :label="__('Email Address')"
-    size="sm"
-    prependIcon="Envelope"
-    :prependLabel="__('Email')"
-    appendIcon="paper-plane"
-    :appendLabel="__('Send')"
+    type="email"
     :help="__('Please enter your email.')"
     wire:model.defer="email_address"
+>
+    <x-slot name="prepend">
+        <i class="fa fa-envelope"></i>
+    </x-slot>
+</x-bs::input>
+```
+
+#### Available Props & Slots
+
+- `label`: label to display above the input
+- `type`: input type e.g. `text`, `email`
+- `prepend`: addon to display before input, can be used via named slot
+- `append`: addon to display after input, can be used via named slot
+- `size`: Bootstrap input size e.g. `sm`, `lg`
+- `help`: helper label to display under the input
+
+---
+
+### Link
+
+A hyperlink:
+
+```html
+<x-bs::link
+    :label="__('Users')"
+    route="users"
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `label`: the label to display above the input
-- `size`: the size of the input e.g. `sm`, `lg`
-- `prependIcon`: Font Awesome icon to display before the input e.g. `check`, `times`
-- `prependLabel`: a label to display before the input
-- `appendIcon`: Font Awesome icon to display after the input e.g. `check`, `times`
-- `appendLabel`: a label to display after the input
-- `help`: the helper text to display under the input
+- `label`: label to display, can also be placed in the `slot`
+- `route`: sets the `href` to a route
+- `url`: sets the `href` to a url
+- `href`: sets the `href`
 
 ---
 
 ### Nav Dropdown
 
-A Bootstrap 5 nav dropdown:
+A Bootstrap nav dropdown:
 
 ```html
 <x-bs::nav-dropdown
-    :toggleIcon="false"
-    icon="user-circle"
     :label="Auth::user()->name"
-    justify="end">
+>
     <x-bs::dropdown-item 
-        type="button"
-        icon="edit" 
         :label="__('Update Profile')"
         wire:click="$emit('showModal', 'profile.update')"
     />
     <x-bs::dropdown-item
-        type="button"
-        icon="sign-out-alt" 
         :label="__('Logout')"
         wire:click="logout"
     />
 </x-bs::nav-dropdown>
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `toggleIcon`: sets if it should display the toggle arrow icon
-- `icon`: Font Awesome icon to display before the label e.g. `check`, `times`
-- `label`: the dropdown button label to display
-- `justify`: the justification for the dropdown menu e.g. `start`, `end`
-- `slot`: the dropdown menu items
+- `label`: dropdown label to display, can be used via named slot
+- `items`: dropdown items, can also be placed in the `slot`
 
 ---
 
-### Nav Item
+### Nav Link
 
-A Bootstrap 5 nav menu item:
+A Bootstrap nav link:
 
 ```html
-<x-bs::nav-item
-    icon="users"
+<x-bs::nav-link
     :label="__('Users')"
     route="users"
-    url="/users"
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `icon`: Font Awesome icon to display before the label e.g. `check`, `times`
-- `label`: the label to display, can also be placed in the `slot`
-- `route`: sets a route for the `href` attribute to use
-- `url`: sets a URL for the `href` attribute to use
+- `label`: label to display, can also be placed in the `slot`
+- `route`: sets the `href` to a route
+- `url`: sets the `href` to a url
+- `href`: sets the `href`
 
 ---
 
 ### Pagination
 
-Responsive Bootstrap 5 pagination links:
+Responsive Bootstrap pagination links:
 
 ```html
 <x-bs::pagination
@@ -415,142 +348,117 @@ Responsive Bootstrap 5 pagination links:
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `links`: the paginated Laravel models
-- `justify`: the justification for the pagination e.g. `center`, `end`
-
-#### Notes
-
-If you are using this inside of a Livewire component, the package is smart enough to use the Livewire pagination views. Just make sure your Livewire component is using the `WithPagination` trait. This component is also responsive, so it will show simple previous/next links on mobile, and full numbered links on desktop.
+- `links`: paginated Laravel models
+- `justify`: Bootstrap justification e.g. `center`, `end`
 
 ---
 
 ### Progress
 
-A Bootstrap 5 progress bar:
+A Bootstrap progress bar:
 
 ```html
 <x-bs::progress
-    height="10"
-    :striped="true"
-    :animated="true"
-    color="success"
-    percent="25"
     :label="__('25% Complete')"
+    percent="25"
+    color="success"
+    height="10"
+    animated
+    striped
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `height`: sets the height of the progress bar in pixels
-- `striped`: sets the progress bar to use striped styling
-- `animated`: sets the progress bar to be animated
-- `color`: a Bootstrap 5 color e.g. `primary`, `danger`, `success`
-- `percent`: sets the percentage for the progress bar
-- `label`: the label to display inside the progress bar
+- `label`: label to display inside the progress bar
+- `percent`: percentage of the progress bar
+- `color`: Bootstrap color e.g. `primary`, `danger`, `success`
+- `height`: height of the progress bar in pixels
+- `animated`: animate the progress bar
+- `striped`: use striped styling for the progress bar
 
 ---
 
 ### Radio
 
-A Bootstrap 5 radio input:
+A Bootstrap radio input:
 
 ```html
 <x-bs::radio
     :label="__('Gender')"
-    :switch="true"
-    :options="['Male', 'Female', 'Other']"
+    :options="['Male', 'Female']"
     :help="__('Please select your gender.')"
+    switch
     wire:model.defer="gender"
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `label`: the label to display above the input
+- `label`: label to display above the input
+- `options`: array of input options e.g. `['Red', 'Blue']`
+- `help`: helper label to display under the input
 - `switch`: sets the input to use a switch style
-- `options`: an array of options for the input e.g. `['Red', 'Blue']`
-- `help`: the helper text to display under the input
-
-#### Notes
-
-The `options` can be an indexed or associative array. If the array is associative, the array keys will be used for the option values, and the array values will be used for the option labels. This works the same for the `select` component.
 
 ---
 
 ### Select
 
-A Bootstrap 5 select input:
+A Bootstrap select input:
 
 ```html
 <x-bs::select
     :label="__('Your Country')"
-    size="lg"
-    prependIcon="globe"
-    :prependLabel="__('Country')"
-    appendIcon="map-marker-alt"
-    :appendLabel="__('Location')"
     :placeholder="__('Select Country')"
-    :blankOption="true"
     :options="['Australia', 'Canada', 'USA']"
+    :prepend="__('I live in')"
+    :append="_('right now.')"
     :help="__('Please select your country.')"
     wire:model.defer="your_country"
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `label`: the label to display above the input
-- `size`: the size of the input e.g. `sm`, `lg`
-- `prependIcon`: Font Awesome icon to display before the input e.g. `check`, `times`
-- `prependLabel`: a label to display before the input
-- `appendIcon`: Font Awesome icon to display after the input e.g. `check`, `times`
-- `appendLabel`: a label to display after the input
-- `placeholder`: a placeholder to use for a blank first option
-- `blankOption`: include a blank first option for the input
-- `options`: an array of options for the input e.g. `['Red', 'Blue']`
-- `help`: the helper text to display under the input
-
-#### Notes
-
-The `options` prop works the same as a `radio`. So you can specify an indexed or associative array, and the options will use the keys and/or values accordingly.
+- `label`: label to display above the input
+- `placeholder`: placeholder to use for the empty first option
+- `options`: array of input options e.g. `['Red', 'Blue']`
+- `prepend`: addon to display before input, can be used via named slot
+- `append`: addon to display after input, can be used via named slot
+- `size`: Bootstrap input size e.g. `sm`, `lg`
+- `help`: helper label to display under the input
 
 ---
 
 ### Textarea
 
-A Bootstrap 5 textarea input:
+A Bootstrap textarea input:
 
 ```html
 <x-bs::textarea
     :label="__('Biography')"
-    size="sm"
-    prependIcon="address-card"
-    :prependLabel="__('About')"
-    appendIcon="user"
-    :appendLabel="__('Me')"
+    rows="5"
     :help="__('Please tell us about yourself.')"
     wire:model.defer="biography"
 />
 ```
 
-#### Available Props
+#### Available Props & Slots
 
-- `label`: the label to display above the input
-- `size`: the size of the input e.g. `sm`, `lg`
-- `prependIcon`: Font Awesome icon to display before the input e.g. `check`, `times`
-- `prependLabel`: a label to display before the input
-- `appendIcon`: Font Awesome icon to display after the input e.g. `check`, `times`
-- `appendLabel`: a label to display after the input
-- `help`: the helper text to display under the input
+- `label`: label to display above the input
+- `prepend`: addon to display before input, can be used via named slot
+- `append`: addon to display after input, can be used via named slot
+- `size`: Bootstrap input size e.g. `sm`, `lg`
+- `help`: helper label to display under the input
 
 ## Publishing Components
 
-If you need to tweak the components, publish the package files:
+Use your own component views by publishing the package files:
 
 ```console
 php artisan vendor:publish --tag=laravel-bootstrap-components
 ```
 
-Now you may edit the component view files inside `resources/views/vendor/bs` to your needs. The package will use these view files to render the components.
+Now edit the view files inside `resources/views/vendor/bs`. The package will use these files to render the components.

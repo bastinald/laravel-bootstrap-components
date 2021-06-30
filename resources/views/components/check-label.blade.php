@@ -10,6 +10,8 @@
     ]);
 @endphp
 
-<label {{ $attributes }}>
-    {{ $label ?? $slot }}
-</label>
+@if($label || !$slot->isEmpty())
+    <label {{ $attributes }}>
+        {{ $label ?? $slot }}
+    </label>
+@endif
