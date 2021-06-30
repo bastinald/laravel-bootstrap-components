@@ -17,6 +17,7 @@
         'btn btn-' . $color,
         'btn-' . $size => $size,
     ])->merge([
+        'type' => !$href ? 'button' : null,
         'href' => $href,
         'data-bs-dismiss' => $dismiss,
         'data-bs-toggle' => $toggle,
