@@ -432,6 +432,25 @@ A Bootstrap select input:
 
 ---
 
+### Submit
+
+A Bootstrap submit button:
+
+```html
+<x-bs::submit
+    :label="__('Register')"
+    color="success"
+/>
+```
+
+#### Available Props & Slots
+
+- `label`: label to display, can also be placed in the `slot`
+- `color`: Bootstrap color e.g. `primary`, `danger`, `success`
+- `size`: Bootstrap button size e.g. `sm`, `lg`
+
+---
+
 ### Textarea
 
 A Bootstrap textarea input:
