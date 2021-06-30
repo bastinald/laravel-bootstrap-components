@@ -2,6 +2,7 @@
     'label' => null,
     'color' => 'primary',
     'size' => null,
+    'type' => 'button',
     'route' => null,
     'url' => null,
     'href' => null,
@@ -17,7 +18,7 @@
         'btn btn-' . $color,
         'btn-' . $size => $size,
     ])->merge([
-        'type' => !$href ? 'button' : null,
+        'type' => !$href ? $type : null,
         'href' => $href,
         'data-bs-dismiss' => $dismiss,
         'data-bs-toggle' => $toggle,
