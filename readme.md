@@ -97,6 +97,7 @@ A Bootstrap button:
 - `label`: label to display, can also be placed in the `slot`
 - `color`: Bootstrap color e.g. `primary`, `danger`, `success`
 - `size`: Bootstrap button size e.g. `sm`, `lg`
+- `type`: button type e.g. `button`, `submit`
 - `route`: sets the `href` to a route
 - `url`: sets the `href` to a url
 - `href`: sets the `href`
