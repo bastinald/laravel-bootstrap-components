@@ -1,10 +1,9 @@
 @props([
     'label' => null,
     'type' => 'text',
+    'icon' => null,
     'prepend' => null,
-    'prependIcon' => null,
     'append' => null,
-    'appendIcon' => null,
     'size' => null,
     'help' => null,
 ])
@@ -34,11 +33,11 @@
     <x-bs::label :for="$id" :label="$label"/>
 
     <div class="input-group">
-        <x-bs::input-addon :icon="$prependIcon" :label="$prepend"/>
+        <x-bs::input-addon :icon="$icon" :label="$prepend"/>
 
         <input {{ $attributes }}>
 
-        <x-bs::input-addon :icon="$appendIcon" :label="$append" class="rounded-end"/>
+        <x-bs::input-addon :label="$append" class="rounded-end"/>
 
         <x-bs::error :key="$key"/>
     </div>

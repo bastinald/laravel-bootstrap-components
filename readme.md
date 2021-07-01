@@ -58,7 +58,7 @@ A Bootstrap alert:
 
 #### Available Props & Slots
 
-- `icon`: font icon library class name e.g. `cog`, `envelope`
+- `icon`: icon to show before label e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `color`: Bootstrap color e.g. `primary`, `danger`, `success`
 - `dismissible`: set the alert to be dismissible
@@ -78,7 +78,7 @@ A Bootstrap badge:
 
 #### Available Props & Slots
 
-- `icon`: font icon library class name e.g. `cog`, `envelope`
+- `icon`: icon to show before label e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `color`: Bootstrap color e.g. `primary`, `danger`, `success`
 
@@ -99,7 +99,7 @@ A Bootstrap button:
 
 #### Available Props & Slots
 
-- `icon`: font icon library class name e.g. `cog`, `envelope`
+- `icon`: icon to show before label e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `color`: Bootstrap color e.g. `primary`, `danger`, `success`
 - `size`: Bootstrap button size e.g. `sm`, `lg`
@@ -168,10 +168,9 @@ A Bootstrap color picker input:
 #### Available Props & Slots
 
 - `label`: label to display above the input
+- `icon`: icon to show before input e.g. `cog`, `envelope`
 - `prepend`: addon to display before input, can be used via named slot
-- `prependIcon`: icon name to display before input
 - `append`: addon to display after input, can be used via named slot
-- `appendIcon`: icon name to display after input
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
 
@@ -196,10 +195,9 @@ A Bootstrap datalist input:
 
 - `label`: label to display above the input
 - `options`: array of input options e.g. `['Red', 'Blue']`
+- `icon`: icon to show before input e.g. `cog`, `envelope`
 - `prepend`: addon to display before input, can be used via named slot
-- `prependIcon`: icon name to display before input
 - `append`: addon to display after input, can be used via named slot
-- `appendIcon`: icon name to display after input
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
 
@@ -227,7 +225,7 @@ A Bootstrap dropdown:
 
 #### Available Props & Slots
 
-- `icon`: font icon library class name e.g. `cog`, `envelope`
+- `icon`: icon to show before label e.g. `cog`, `envelope`
 - `label`: dropdown label to display, can be used via named slot
 - `items`: dropdown items, can also be placed in the `slot`
 - `color`: Bootstrap color e.g. `primary`, `danger`, `success`
@@ -248,7 +246,7 @@ A Bootstrap dropdown menu item:
 
 #### Available Props & Slots
 
-- `icon`: font icon library class name e.g. `cog`, `envelope`
+- `icon`: icon to show before label e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `route`: sets the `href` to a route
 - `url`: sets the `href` to a url
@@ -277,10 +275,9 @@ A Bootstrap text input:
 
 - `label`: label to display above the input
 - `type`: input type e.g. `text`, `email`
+- `icon`: icon to show before input e.g. `cog`, `envelope`
 - `prepend`: addon to display before input, can be used via named slot
-- `prependIcon`: icon name to display before input
 - `append`: addon to display after input, can be used via named slot
-- `appendIcon`: icon name to display after input
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
 
@@ -299,7 +296,7 @@ A hyperlink:
 
 #### Available Props & Slots
 
-- `icon`: font icon library class name e.g. `cog`, `envelope`
+- `icon`: icon to show before label e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `route`: sets the `href` to a route
 - `url`: sets the `href` to a url
@@ -328,7 +325,7 @@ A Bootstrap nav dropdown:
 
 #### Available Props & Slots
 
-- `icon`: font icon library class name e.g. `cog`, `envelope`
+- `icon`: icon to show before label e.g. `cog`, `envelope`
 - `label`: dropdown label to display, can be used via named slot
 - `items`: dropdown items, can also be placed in the `slot`
 
@@ -347,7 +344,7 @@ A Bootstrap nav link:
 
 #### Available Props & Slots
 
-- `icon`: font icon library class name e.g. `cog`, `envelope`
+- `icon`: icon to show before label e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `route`: sets the `href` to a route
 - `url`: sets the `href` to a url
@@ -443,10 +440,9 @@ A Bootstrap select input:
 - `label`: label to display above the input
 - `placeholder`: placeholder to use for the empty first option
 - `options`: array of input options e.g. `['Red', 'Blue']`
+- `icon`: icon to show before input e.g. `cog`, `envelope`
 - `prepend`: addon to display before input, can be used via named slot
-- `prependIcon`: icon name to display before input
 - `append`: addon to display after input, can be used via named slot
-- `appendIcon`: icon name to display after input
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
 
@@ -468,10 +464,9 @@ A Bootstrap textarea input:
 #### Available Props & Slots
 
 - `label`: label to display above the input
+- `icon`: icon to show before input e.g. `cog`, `envelope`
 - `prepend`: addon to display before input, can be used via named slot
-- `prependIcon`: icon name to display before input
 - `append`: addon to display after input, can be used via named slot
-- `appendIcon`: icon name to display after input
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
 
