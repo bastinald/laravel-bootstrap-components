@@ -13,6 +13,6 @@ return [
     |
     */
 
-    'icon_class_prefix' => 'fas fa-',
+    'icon_class_prefix' => 'fas fa-fw fa-',
 
 ];
