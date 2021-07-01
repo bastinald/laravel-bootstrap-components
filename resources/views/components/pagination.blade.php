@@ -1,11 +1,11 @@
 @props([
     'links' => null,
-    'justify' => 'end',
+    'justify' => 'center',
 ])
 
 @php
     $attributes = $attributes->class([
-        'd-flex',
+        'd-flex mb-n3',
         'justify-content-' . $justify => $justify,
     ])->merge([
         //

@@ -16,6 +16,8 @@ This package contains a set of useful Bootstrap Laravel Blade components. It pro
     - [Datalist](#datalist)
     - [Dropdown](#dropdown)
     - [Dropdown Item](#dropdown-item)
+    - [Icon](#icon)
+    - [Image](#image)
     - [Input](#input)
     - [Link](#link)
     - [Nav Dropdown](#nav-dropdown)
@@ -254,6 +256,44 @@ A Bootstrap dropdown menu item:
 
 ---
 
+### Icon
+
+A font icon via your installed library:
+
+```html
+<x-bs::icon
+    name="cog"
+/>
+```
+
+#### Available Props & Slots
+
+- `name`: icon name from the library
+
+---
+
+### Image
+
+An image:
+
+```html
+<x-bs::image
+    asset="images/logo.png"
+    height="24"
+    rounded
+/>
+```
+
+#### Available Props & Slots
+
+- `asset`: sets the `src` to an asset
+- `src`: sets the `src`
+- `fluid`: sets the image to be fluid width
+- `thumbnail`: sets the image to use thumbnail styling
+- `rounded`: sets the image to have rounded corners
+
+---
+
 ### Input
 
 A Bootstrap text input:
@@ -366,7 +406,7 @@ Responsive Bootstrap pagination links:
 #### Available Props & Slots
 
 - `links`: paginated Laravel models
-- `justify`: Bootstrap justification e.g. `center`, `end`
+- `justify`: Bootstrap justification e.g. `start`, `end`
 
 ---
 
