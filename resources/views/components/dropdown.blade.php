@@ -1,4 +1,5 @@
 @props([
+    'icon' => null,
     'label' => null,
     'items' => null,
     'color' => 'primary',
@@ -17,6 +18,8 @@
 
 <div class="dropdown d-inline-block">
     <button {{ $attributes }}>
+        <x-bs::icon :name="$icon"/>
+
         {{ $label }}
     </button>
 

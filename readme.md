@@ -25,11 +25,14 @@ This package contains a set of useful Bootstrap Laravel Blade components. It pro
     - [Radio](#radio)
     - [Select](#select)
     - [Textarea](#textarea)
-- [Publishing Components](#publishing-components)
+- [Publishing Assets](#publishing-assets)
+    - [Custom Views](#custom-views)
+    - [Custom Icons](#custom-icons)
 
 ## Requirements
 
 - Bootstrap 5 must be installed via webpack first
+- A font icon library (like Font Awesome) must be installed to use icons
 
 ## Installation
 
@@ -55,6 +58,7 @@ A Bootstrap alert:
 
 #### Available Props & Slots
 
+- `icon`: font icon library class name e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `color`: Bootstrap color e.g. `primary`, `danger`, `success`
 - `dismissible`: set the alert to be dismissible
@@ -74,6 +78,7 @@ A Bootstrap badge:
 
 #### Available Props & Slots
 
+- `icon`: font icon library class name e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `color`: Bootstrap color e.g. `primary`, `danger`, `success`
 
@@ -94,6 +99,7 @@ A Bootstrap button:
 
 #### Available Props & Slots
 
+- `icon`: font icon library class name e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `color`: Bootstrap color e.g. `primary`, `danger`, `success`
 - `size`: Bootstrap button size e.g. `sm`, `lg`
@@ -163,7 +169,9 @@ A Bootstrap color picker input:
 
 - `label`: label to display above the input
 - `prepend`: addon to display before input, can be used via named slot
+- `prependIcon`: icon name to display before input
 - `append`: addon to display after input, can be used via named slot
+- `appendIcon`: icon name to display after input
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
 
@@ -189,7 +197,9 @@ A Bootstrap datalist input:
 - `label`: label to display above the input
 - `options`: array of input options e.g. `['Red', 'Blue']`
 - `prepend`: addon to display before input, can be used via named slot
+- `prependIcon`: icon name to display before input
 - `append`: addon to display after input, can be used via named slot
+- `appendIcon`: icon name to display after input
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
 
@@ -217,6 +227,7 @@ A Bootstrap dropdown:
 
 #### Available Props & Slots
 
+- `icon`: font icon library class name e.g. `cog`, `envelope`
 - `label`: dropdown label to display, can be used via named slot
 - `items`: dropdown items, can also be placed in the `slot`
 - `color`: Bootstrap color e.g. `primary`, `danger`, `success`
@@ -237,6 +248,7 @@ A Bootstrap dropdown menu item:
 
 #### Available Props & Slots
 
+- `icon`: font icon library class name e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `route`: sets the `href` to a route
 - `url`: sets the `href` to a url
@@ -266,7 +278,9 @@ A Bootstrap text input:
 - `label`: label to display above the input
 - `type`: input type e.g. `text`, `email`
 - `prepend`: addon to display before input, can be used via named slot
+- `prependIcon`: icon name to display before input
 - `append`: addon to display after input, can be used via named slot
+- `appendIcon`: icon name to display after input
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
 
@@ -285,6 +299,7 @@ A hyperlink:
 
 #### Available Props & Slots
 
+- `icon`: font icon library class name e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `route`: sets the `href` to a route
 - `url`: sets the `href` to a url
@@ -313,6 +328,7 @@ A Bootstrap nav dropdown:
 
 #### Available Props & Slots
 
+- `icon`: font icon library class name e.g. `cog`, `envelope`
 - `label`: dropdown label to display, can be used via named slot
 - `items`: dropdown items, can also be placed in the `slot`
 
@@ -331,6 +347,7 @@ A Bootstrap nav link:
 
 #### Available Props & Slots
 
+- `icon`: font icon library class name e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `route`: sets the `href` to a route
 - `url`: sets the `href` to a url
@@ -427,7 +444,9 @@ A Bootstrap select input:
 - `placeholder`: placeholder to use for the empty first option
 - `options`: array of input options e.g. `['Red', 'Blue']`
 - `prepend`: addon to display before input, can be used via named slot
+- `prependIcon`: icon name to display before input
 - `append`: addon to display after input, can be used via named slot
+- `appendIcon`: icon name to display after input
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
 
@@ -450,16 +469,30 @@ A Bootstrap textarea input:
 
 - `label`: label to display above the input
 - `prepend`: addon to display before input, can be used via named slot
+- `prependIcon`: icon name to display before input
 - `append`: addon to display after input, can be used via named slot
+- `appendIcon`: icon name to display after input
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
 
-## Publishing Components
+## Publishing Assets
 
-Use your own component views by publishing the package files:
+### Custom Views
+
+Use your own component views by publishing the package views:
 
 ```console
-php artisan vendor:publish --tag=laravel-bootstrap-components
+php artisan vendor:publish --tag=laravel-bootstrap-components:views
 ```
 
-Now edit the view files inside `resources/views/vendor/bs`. The package will use these files to render the components.
+Now edit the files inside `resources/views/vendor/bs`. The package will use these files to render the components.
+
+### Custom Icons
+
+Use your own font icons by publishing the package config:
+
+```console
+php artisan vendor:publish --tag=laravel-bootstrap-components:config
+```
+
+Now edit the `icon_class_prefix` value inside `config/laravel-bootstrap-components.php`. The package will use this class to render the icons.

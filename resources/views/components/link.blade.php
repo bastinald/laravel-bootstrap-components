@@ -1,4 +1,5 @@
 @props([
+    'icon' => null,
     'label' => null,
     'route' => null,
     'url' => null,
@@ -17,5 +18,7 @@
 @endphp
 
 <a {{ $attributes }}>
+    <x-bs::icon :name="$icon"/>
+
     {{ $label ?? $slot }}
 </a>

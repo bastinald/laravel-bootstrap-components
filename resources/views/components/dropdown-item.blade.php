@@ -1,4 +1,5 @@
 @props([
+    'icon' => null,
     'label' => null,
     'route' => null,
     'url' => null,
@@ -19,5 +20,7 @@
 @endphp
 
 <{{ $href ? 'a' : 'button' }} {{ $attributes }}>
+    <x-bs::icon :name="$icon"/>
+
     {{ $label ?? $slot }}
 </{{ $href ? 'a' : 'button' }}>

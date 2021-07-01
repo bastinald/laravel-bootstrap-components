@@ -1,4 +1,5 @@
 @props([
+    'icon' => null,
     'label' => null,
     'items' => null,
 ])
@@ -14,6 +15,8 @@
 
 <div class="nav-item dropdown">
     <a {{ $attributes }}>
+        <x-bs::icon :name="$icon"/>
+
         {{ $label }}
     </a>
 

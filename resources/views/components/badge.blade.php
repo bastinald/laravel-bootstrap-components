@@ -1,4 +1,5 @@
 @props([
+    'icon' => null,
     'label' => null,
     'color' => 'primary',
 ])
@@ -12,5 +13,7 @@
 @endphp
 
 <span {{ $attributes }}>
+    <x-bs::icon :name="$icon"/>
+
     {{ $label ?? $slot }}
 </span>

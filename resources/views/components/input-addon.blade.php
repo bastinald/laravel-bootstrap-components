@@ -1,4 +1,5 @@
 @props([
+    'icon' => null,
     'label' => null,
 ])
 
@@ -10,8 +11,10 @@
     ]);
 @endphp
 
-@if($label || !$slot->isEmpty())
+@if($icon || $label || !$slot->isEmpty())
     <span {{ $attributes }}>
+        <x-bs::icon :name="$icon"/>
+
         {{ $label ?? $slot }}
     </span>
 @endif
