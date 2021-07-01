@@ -2,7 +2,7 @@
 
 This package contains a set of useful Bootstrap Laravel Blade components. It promotes DRY principles and allows you to keep your HTML nice and clean. Components include alerts, badges, buttons, form inputs (with automatic error feedback), dropdowns, navs, pagination (responsive), and more. The components come with Laravel Livewire integration built in, so you can use them with or without Livewire.
 
-### Documentation
+## Documentation
 
 - [Requirements](#requirements)
 - [Installation](#installation)
