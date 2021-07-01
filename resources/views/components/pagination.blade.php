@@ -1,6 +1,6 @@
 @props([
     'links' => null,
-    'justify' => 'center',
+    'justify' => 'end',
 ])
 
 @php
