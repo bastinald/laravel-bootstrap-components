@@ -8,7 +8,7 @@
 
 @php
     $attributes = $attributes->class([
-        'btn btn-' . $color . ' dropdown-toggle',
+        'btn btn-' . $color,
         'btn-' . $size => $size,
     ])->merge([
         'type' => 'button',
