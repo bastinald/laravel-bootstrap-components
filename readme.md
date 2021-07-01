@@ -111,6 +111,7 @@ A Bootstrap button:
 - `href`: sets the `href`
 - `dismiss`: a `data-bs-dismiss` value e.g. `alert`, `modal`
 - `toggle`: a `data-bs-toggle` value e.g. `collapse`, `dropdown`
+- `confirm`: prompts the user for confirmation on click
 
 ---
 
