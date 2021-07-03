@@ -270,6 +270,7 @@ A font icon via your installed library:
 #### Available Props & Slots
 
 - `name`: icon name from the library
+- `color`: Bootstrap color e.g. `primary`, `danger`, `success`
 
 ---
 
