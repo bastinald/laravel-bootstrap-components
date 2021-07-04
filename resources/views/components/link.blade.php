@@ -3,7 +3,7 @@
     'label' => null,
     'route' => null,
     'url' => null,
-    'href' => null,
+    'href' => '#',
 ])
 
 @php
