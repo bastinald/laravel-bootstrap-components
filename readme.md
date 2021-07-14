@@ -150,6 +150,7 @@ A Bootstrap close button:
 
 #### Available Props & Slots
 
+- `color`: Bootstrap close color e.g. `white`
 - `dismiss`: a `data-bs-dismiss` value e.g. `alert`, `modal`
 
 ---
