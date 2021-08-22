@@ -4,6 +4,7 @@
     'route' => null,
     'url' => null,
     'href' => null,
+    'click' => null,
 ])
 
 @php
@@ -16,6 +17,7 @@
     ])->merge([
         'type' => !$href ? 'button' : null,
         'href' => $href,
+        'wire:click' => $click,
     ]);
 @endphp
 

@@ -1,12 +1,19 @@
 @props([
     'name' => null,
+    'style' => config('laravel-bootstrap-components.font_awesome_style'),
+    'size' => null,
     'color' => null,
+    'spin' => false,
+    'pulse' => false,
 ])
 
 @php
     $attributes = $attributes->class([
-        config('laravel-bootstrap-components.icon_class_prefix') . $name,
+        'fa' . Str::limit($style, 1, null) . ' fa-fw fa-' . $name,
+        'fa-' . $size => $size,
         'text-' . $color => $color,
+        'fa-spin' => $spin,
+        'fa-pulse' => $pulse,
     ])->merge([
         //
     ]);

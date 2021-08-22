@@ -4,6 +4,7 @@
     'route' => null,
     'url' => null,
     'href' => '#',
+    'click' => null,
 ])
 
 @php
@@ -14,6 +15,7 @@
         //
     ])->merge([
         'href' => $href,
+        'wire:click.prevent' => $click,
     ]);
 @endphp
 

@@ -27,6 +27,8 @@ This package contains a set of useful Bootstrap Laravel Blade components. It pro
     - [Radio](#radio)
     - [Select](#select)
     - [Textarea](#textarea)
+- [Traits](#traits)
+    - [WithModel](#withmodel)
 - [Publishing Assets](#publishing-assets)
     - [Custom Views](#custom-views)
     - [Custom Icons](#custom-icons)
@@ -34,7 +36,7 @@ This package contains a set of useful Bootstrap Laravel Blade components. It pro
 ## Requirements
 
 - Bootstrap 5 must be installed via webpack first
-- A font icon library (like Font Awesome) must be installed to use icons
+- Font Awesome must be installed to use icons
 
 ## Installation
 
@@ -60,7 +62,7 @@ A Bootstrap alert:
 
 #### Available Props & Slots
 
-- `icon`: icon to show before label e.g. `cog`, `envelope`
+- `icon`: Font Awesome icon to show before label e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `color`: Bootstrap color e.g. `primary`, `danger`, `success`
 - `dismissible`: set the alert to be dismissible
@@ -80,7 +82,7 @@ A Bootstrap badge:
 
 #### Available Props & Slots
 
-- `icon`: icon to show before label e.g. `cog`, `envelope`
+- `icon`: Font Awesome icon to show before label e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `color`: Bootstrap color e.g. `primary`, `danger`, `success`
 
@@ -101,7 +103,7 @@ A Bootstrap button:
 
 #### Available Props & Slots
 
-- `icon`: icon to show before label e.g. `cog`, `envelope`
+- `icon`: Font Awesome icon to show before label e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `color`: Bootstrap color e.g. `primary`, `danger`, `success`
 - `size`: Bootstrap button size e.g. `sm`, `lg`
@@ -111,6 +113,7 @@ A Bootstrap button:
 - `href`: sets the `href`
 - `dismiss`: a `data-bs-dismiss` value e.g. `alert`, `modal`
 - `toggle`: a `data-bs-toggle` value e.g. `collapse`, `dropdown`
+- `click`: Livewire action on click
 - `confirm`: prompts the user for confirmation on click
 
 ---
@@ -125,7 +128,7 @@ A Bootstrap checkbox input:
     :checkLabel="__('I agree to the TOS')"
     :help="__('Please accept the TOS.')"
     switch
-    wire:model.defer="agree"
+    model="agree"
 />
 ```
 
@@ -135,6 +138,8 @@ A Bootstrap checkbox input:
 - `checkLabel`: label to display beside the input
 - `help`: helper label to display under the input
 - `switch`: style the input as a switch
+- `model`: Livewire model property key
+- `lazy`: bind Livewire data on change
 
 ---
 
@@ -165,18 +170,20 @@ A Bootstrap color picker input:
     :prepend="__('I like')"
     :append="_('the most.')"
     :help="__('Please pick a color.')"
-    wire:model.defer="favorite_color"
+    model="favorite_color"
 />
 ```
 
 #### Available Props & Slots
 
 - `label`: label to display above the input
-- `icon`: icon to show before input e.g. `cog`, `envelope`
+- `icon`: Font Awesome icon to show before input e.g. `cog`, `envelope`
 - `prepend`: addon to display before input, can be used via named slot
 - `append`: addon to display after input, can be used via named slot
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
+- `model`: Livewire model property key
+- `lazy`: bind Livewire data on change
 
 ---
 
@@ -191,7 +198,7 @@ A Bootstrap datalist input:
     :prepend="__('I live in')"
     :append="_('right now.')"
     :help="__('Please enter your city.')"
-    wire:model.defer="city_name"
+    model="city_name"
 />
 ```
 
@@ -199,11 +206,14 @@ A Bootstrap datalist input:
 
 - `label`: label to display above the input
 - `options`: array of input options e.g. `['Red', 'Blue']`
-- `icon`: icon to show before input e.g. `cog`, `envelope`
+- `icon`: Font Awesome icon to show before input e.g. `cog`, `envelope`
 - `prepend`: addon to display before input, can be used via named slot
 - `append`: addon to display after input, can be used via named slot
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
+- `model`: Livewire model property key
+- `debounce`: time in ms to bind Livewire data on keyup e.g. `500`
+- `lazy`: bind Livewire data on change
 
 ---
 
@@ -218,18 +228,18 @@ A Bootstrap dropdown:
 >
     <x-bs::dropdown-item 
         :label="__('By Name')"
-        wire:click="$set('filter', 'name')"
+        click="$set('filter', 'name')"
     />
     <x-bs::dropdown-item
         :label="__('By Age')"
-        wire:click="$set('filter', 'age')"
+        click="$set('filter', 'age')"
     />
 </x-bs::dropdown>
 ```
 
 #### Available Props & Slots
 
-- `icon`: icon to show before label e.g. `cog`, `envelope`
+- `icon`: Font Awesome icon to show before label e.g. `cog`, `envelope`
 - `label`: dropdown label to display, can be used via named slot
 - `items`: dropdown items, can also be placed in the `slot`
 - `color`: Bootstrap color e.g. `primary`, `danger`, `success`
@@ -250,7 +260,7 @@ A Bootstrap dropdown menu item:
 
 #### Available Props & Slots
 
-- `icon`: icon to show before label e.g. `cog`, `envelope`
+- `icon`: Font Awesome icon to show before label e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `route`: sets the `href` to a route
 - `url`: sets the `href` to a url
@@ -258,9 +268,25 @@ A Bootstrap dropdown menu item:
 
 ---
 
+### Form
+
+A Bootstrap form:
+
+```html
+<x-bs::form submit="login">
+    <x-bs::input :label="__('Email')" type="email" model="email"/>
+    <x-bs::input :label="__('Password')" type="password" model="password"/>
+    <x-bs::button :label="__('Login')" type="submit"/>
+</x-bs::form>
+```
+
+#### Available Props & Slots
+
+- `submit`: Livewire action on submit
+
 ### Icon
 
-A font icon via your installed library:
+A Font Awesome icon:
 
 ```html
 <x-bs::icon
@@ -270,8 +296,12 @@ A font icon via your installed library:
 
 #### Available Props & Slots
 
-- `name`: icon name from the library
+- `name`: Font Awesome icon name e.g. `cog`, `rocket`
+- `style`: Font Awesome icon style e.g. `solid`, `regular`, `brands`
+- `size`: Font Awesome icon size e.g. `sm`, `lg`, `3x`, `5x`
 - `color`: Bootstrap color e.g. `primary`, `danger`, `success`
+- `spin`: sets the icon to use a spin animation
+- `pulse`: sets the icon to use a pulse animation
 
 ---
 
@@ -306,7 +336,7 @@ A Bootstrap text input:
     :label="__('Email Address')"
     type="email"
     :help="__('Please enter your email.')"
-    wire:model.defer="email_address"
+    model="email_address"
 >
     <x-slot name="prepend">
         <i class="fa fa-envelope"></i>
@@ -318,11 +348,14 @@ A Bootstrap text input:
 
 - `label`: label to display above the input
 - `type`: input type e.g. `text`, `email`
-- `icon`: icon to show before input e.g. `cog`, `envelope`
+- `icon`: Font Awesome icon to show before input e.g. `cog`, `envelope`
 - `prepend`: addon to display before input, can be used via named slot
 - `append`: addon to display after input, can be used via named slot
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
+- `model`: Livewire model property key
+- `debounce`: time in ms to bind Livewire data on keyup e.g. `500`
+- `lazy`: bind Livewire data on change
 
 ---
 
@@ -339,7 +372,7 @@ A hyperlink:
 
 #### Available Props & Slots
 
-- `icon`: icon to show before label e.g. `cog`, `envelope`
+- `icon`: Font Awesome icon to show before label e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `route`: sets the `href` to a route
 - `url`: sets the `href` to a url
@@ -357,18 +390,18 @@ A Bootstrap nav dropdown:
 >
     <x-bs::dropdown-item 
         :label="__('Update Profile')"
-        wire:click="$emit('showModal', 'profile.update')"
+        click="$emit('showModal', 'profile.update')"
     />
     <x-bs::dropdown-item
         :label="__('Logout')"
-        wire:click="logout"
+        click="logout"
     />
 </x-bs::nav-dropdown>
 ```
 
 #### Available Props & Slots
 
-- `icon`: icon to show before label e.g. `cog`, `envelope`
+- `icon`: Font Awesome icon to show before label e.g. `cog`, `envelope`
 - `label`: dropdown label to display, can be used via named slot
 - `items`: dropdown items, can also be placed in the `slot`
 
@@ -387,7 +420,7 @@ A Bootstrap nav link:
 
 #### Available Props & Slots
 
-- `icon`: icon to show before label e.g. `cog`, `envelope`
+- `icon`: Font Awesome icon to show before label e.g. `cog`, `envelope`
 - `label`: label to display, can also be placed in the `slot`
 - `route`: sets the `href` to a route
 - `url`: sets the `href` to a url
@@ -449,7 +482,7 @@ A Bootstrap radio input:
     :options="['Male', 'Female']"
     :help="__('Please select your gender.')"
     switch
-    wire:model.defer="gender"
+    model="gender"
 />
 ```
 
@@ -459,6 +492,8 @@ A Bootstrap radio input:
 - `options`: array of input options e.g. `['Red', 'Blue']`
 - `help`: helper label to display under the input
 - `switch`: sets the input to use a switch style
+- `model`: Livewire model property key
+- `lazy`: bind Livewire data on change
 
 ---
 
@@ -474,7 +509,7 @@ A Bootstrap select input:
     :prepend="__('I live in')"
     :append="_('right now.')"
     :help="__('Please select your country.')"
-    wire:model.defer="your_country"
+    model="your_country"
 />
 ```
 
@@ -483,11 +518,13 @@ A Bootstrap select input:
 - `label`: label to display above the input
 - `placeholder`: placeholder to use for the empty first option
 - `options`: array of input options e.g. `['Red', 'Blue']`
-- `icon`: icon to show before input e.g. `cog`, `envelope`
+- `icon`: Font Awesome icon to show before input e.g. `cog`, `envelope`
 - `prepend`: addon to display before input, can be used via named slot
 - `append`: addon to display after input, can be used via named slot
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
+- `model`: Livewire model property key
+- `lazy`: bind Livewire data on change
 
 ---
 
@@ -500,18 +537,108 @@ A Bootstrap textarea input:
     :label="__('Biography')"
     rows="5"
     :help="__('Please tell us about yourself.')"
-    wire:model.defer="biography"
+    model="biography"
 />
 ```
 
 #### Available Props & Slots
 
 - `label`: label to display above the input
-- `icon`: icon to show before input e.g. `cog`, `envelope`
+- `icon`: Font Awesome icon to show before input e.g. `cog`, `envelope`
 - `prepend`: addon to display before input, can be used via named slot
 - `append`: addon to display after input, can be used via named slot
 - `size`: Bootstrap input size e.g. `sm`, `lg`
 - `help`: helper label to display under the input
+- `model`: Livewire model property key
+- `debounce`: time in ms to bind Livewire data on keyup e.g. `500`
+- `lazy`: bind Livewire data on change
+
+## Traits
+
+### WithModel
+
+This trait makes form data model manipulation a breeze. No more having to create a Livewire component property for every single form input. All form data will be placed inside the `$model` property array.
+
+#### Getting Model Data
+
+Get the model data as an array:
+
+```php
+$array = $this->model;
+```
+
+Get the model data as a collection:
+
+```php
+$collection = $this->model();
+```
+
+#### Setting Model Data
+
+Set a single value:
+
+```php
+$this->setModel('name', 'Kevin');
+```
+
+Set values using Eloquent model data:
+
+```php
+$this->setModel(User::first());
+```
+
+Set values using an array:
+
+```php
+$this->setModel([
+    'name' => 'Kevin',
+    'email' => 'kevin@example.com',
+]);
+```
+
+#### Working With Arrays
+
+Add an empty array item:
+
+```php
+$this->addModelItem('locations');
+```
+
+Remove an array item by its key:
+
+```php
+$this->removeModelItem('locations', 3);
+```
+
+Order an array item by its key & direction:
+
+```php
+$this->orderModelItem('locations', 3, 'up');
+```
+
+The direction should be `up` or `down`.
+
+#### Binding Model Data
+
+Package components work with this trait via the `model` attribute:
+
+```html
+<x-bs::input :label="__('Name')" model="name"/>
+<x-bs::input :label="__('Email')" type="email" model="email"/>
+```
+
+#### Validating Model Data
+
+Use the `validateModel` method to validate model data:
+
+```php
+$this->validateModel([
+    'name' => ['required'],
+    'email' => ['required', 'email'],
+]);
+```
+
+This method works just like the Livewire `validate` method, so you can specify your rules in a separate `rules` method if you prefer.
 
 ## Publishing Assets
 

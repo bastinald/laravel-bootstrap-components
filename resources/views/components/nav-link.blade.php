@@ -4,6 +4,7 @@
     'route' => null,
     'url' => null,
     'href' => null,
+    'click' => null,
 ])
 
 @php
@@ -15,6 +16,7 @@
         'active' => $href == Request::url(),
     ])->merge([
         'href' => $href,
+        'wire:click.prevent' => $click,
     ]);
 @endphp
 

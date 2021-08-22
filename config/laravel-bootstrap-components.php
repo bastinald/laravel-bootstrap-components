@@ -4,15 +4,30 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Icon Class Prefix
+    | Font Awesome Style
     |--------------------------------------------------------------------------
     |
-    | This value is the CSS class prefix used by the icon component. It is
-    | designed to be used with font icons, and defaults to Font Awesome free.
-    | You will have to install the library via webpack to use icons.
+    | This value is the default Font Awesome style to use for icons. This can
+    | be overridden at the component level for cases where you want to show a
+    | brand icon, etc. Regular and light require FA pro to be installed.
+    |
+    | Supported: "solid", "regular", "light"
     |
     */
 
-    'icon_class_prefix' => 'fas fa-fw fa-',
+    'font_awesome_style' => 'solid',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Use With Model Trait
+    |--------------------------------------------------------------------------
+    |
+    | This value specifies if you are using the WithModel trait for modelled
+    | form data in your Livewire components. This trait allows you to use a
+    | single $model property for form data, rather than a ton of separate ones.
+    |
+    */
+
+    'use_with_model_trait' => true,
 
 ];

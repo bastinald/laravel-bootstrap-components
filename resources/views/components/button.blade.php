@@ -9,6 +9,7 @@
     'href' => null,
     'dismiss' => null,
     'toggle' => null,
+    'click' => null,
     'confirm' => false,
 ])
 
@@ -24,6 +25,7 @@
         'href' => $href,
         'data-bs-dismiss' => $dismiss,
         'data-bs-toggle' => $toggle,
+        'wire:click' => $click,
         'onclick' => $confirm ? 'confirm(\'' . __('Are you sure?') . '\') || event.stopImmediatePropagation()' : null,
     ]);
 @endphp

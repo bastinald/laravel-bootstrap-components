@@ -6,12 +6,20 @@
     'append' => null,
     'size' => null,
     'help' => null,
+    'model' => null,
+    'debounce' => null,
+    'lazy' => false,
 ])
 
 @php
-    $model = $attributes->whereStartsWith('wire:model')->first();
-    $key = $attributes->get('name', $model);
-    $id = $attributes->get('id', $model);
+    if ($debounce) $bind = 'debounce.' . (ctype_digit($debounce) ? $debounce : 150) . 'ms';
+    else if ($lazy) $bind = 'lazy';
+    else $bind = 'defer';
+
+    $wireModel = $attributes->whereStartsWith('wire:model')->first();
+    $key = $attributes->get('name', $model ?? $wireModel);
+    $id = $attributes->get('id', $model ?? $wireModel);
+    $prefix = config('laravel-bootstrap-components.use_with_model_trait') ? 'model.' : null;
     $list = $attributes->get('list', $key . '_list');
 
     $attributes = $attributes->class([
@@ -22,6 +30,7 @@
     ])->merge([
         'list' => $list,
         'id' => $id,
+        'wire:model.' . $bind => $model ? $prefix . $model : null,
     ]);
 @endphp
 

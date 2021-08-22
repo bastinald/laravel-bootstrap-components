@@ -7,12 +7,18 @@
     'append' => null,
     'size' => null,
     'help' => null,
+    'model' => null,
+    'lazy' => false,
 ])
 
 @php
-    $model = $attributes->whereStartsWith('wire:model')->first();
-    $key = $attributes->get('name', $model);
-    $id = $attributes->get('id', $model);
+    if ($lazy) $bind = 'lazy';
+    else $bind = 'defer';
+
+    $wireModel = $attributes->whereStartsWith('wire:model')->first();
+    $key = $attributes->get('name', $model ?? $wireModel);
+    $id = $attributes->get('id', $model ?? $wireModel);
+    $prefix = config('laravel-bootstrap-components.use_with_model_trait') ? 'model.' : null;
     $options = Arr::isAssoc($options) ? $options : array_combine($options, $options);
 
     $attributes = $attributes->class([
@@ -22,6 +28,7 @@
         'is-invalid' => $errors->has($key),
     ])->merge([
         'id' => $id,
+        'wire:model.' . $bind => $model ? $prefix . $model : null,
     ]);
 @endphp
 
