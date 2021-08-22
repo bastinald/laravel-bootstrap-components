@@ -561,12 +561,6 @@ This trait makes form data model manipulation a breeze. No more having to create
 
 #### Getting Model Data
 
-Get the model data as an array:
-
-```php
-$array = $this->model;
-```
-
 Get the model data as a collection:
 
 ```php
