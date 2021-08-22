@@ -7,6 +7,7 @@
 @php
     $attributes = $attributes->class([
         'nav-link',
+        'dropdown-toggle',
     ])->merge([
         'href' => '#',
         'data-bs-toggle' => 'dropdown',
