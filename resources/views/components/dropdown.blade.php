@@ -10,8 +10,8 @@
     $attributes = $attributes->class([
         'btn btn-' . $color,
         'btn-' . $size => $size,
-        'border-0 p-0' => $color == 'link',
         'dropdown-toggle',
+        'border-0 p-0' => $color == 'link',
     ])->merge([
         'type' => 'button',
         'data-bs-toggle' => 'dropdown',
