@@ -77,4 +77,11 @@ trait WithModel
 
         return $validatedModel;
     }
+
+    public function updatingModelSearch()
+    {
+        if (method_exists($this, 'resetPage')) {
+            $this->resetPage();
+        }
+    }
 }
