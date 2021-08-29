@@ -5,7 +5,7 @@
 
 @php
     $attributes = $attributes->class([
-        'd-flex mb-n3',
+        'd-flex',
         'justify-content-' . $justify => $justify,
     ])->merge([
         //

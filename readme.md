@@ -217,6 +217,24 @@ A Bootstrap datalist input:
 
 ---
 
+### Desc
+
+A description list:
+
+```html
+<x-bs::desc 
+    :title="__('ID')"
+    :data="$user->id"
+/>
+```
+
+#### Available Props & Slots
+
+- `title`: the description list title
+- `data`: the description list data
+
+---
+
 ### Dropdown
 
 A Bootstrap dropdown:
