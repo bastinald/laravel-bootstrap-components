@@ -231,7 +231,8 @@ A description list:
 #### Available Props & Slots
 
 - `title`: the description list title
-- `data`: the description list data
+- `data`: the description list data, can also be placed in the `slot`
+- `date`: a date to use for the data (for use with [Laravel Timezone](https://github.com/jamesmills/laravel-timezone))
 
 ---
 
