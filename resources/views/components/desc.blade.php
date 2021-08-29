@@ -1,6 +1,6 @@
 @props([
-    'title' => null,
-    'data' => null,
+    'term' => null,
+    'details' => null,
     'date' => null,
 ])
 
@@ -13,11 +13,11 @@
 @endphp
 
 <dl {{ $attributes }}>
-    <dt>{{ $title }}</dt>
+    <dt>{{ $term }}</dt>
 
     <dd class="mb-0">
-        @if($data || !$slot->isEmpty())
-            {{ $data ?? $slot }}
+        @if($details || !$slot->isEmpty())
+            {{ $details ?? $slot }}
         @elseif($date)
             @displayDate($date)
         @else

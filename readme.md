@@ -223,16 +223,16 @@ A description list:
 
 ```html
 <x-bs::desc 
-    :title="__('ID')"
-    :data="$user->id"
+    :term="__('ID')"
+    :details="$user->id"
 />
 ```
 
 #### Available Props & Slots
 
-- `title`: the description list title
-- `data`: the description list data, can also be placed in the `slot`
-- `date`: a date to use for the data (for use with [Laravel Timezone](https://github.com/jamesmills/laravel-timezone))
+- `tern`: the description list term
+- `details`: the description list details, can also be placed in the `slot`
+- `date`: date to use instead of details (for use with [Laravel Timezone](https://github.com/jamesmills/laravel-timezone))
 
 ---
 
