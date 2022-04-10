@@ -1,5 +1,5 @@
 {
-    "name": "bastinald/laravel-bootstrap-components",
+    "name": "ova-studio/laravel-bootstrap-components",
     "homepage": "https://github.com/bastinald/laravel-bootstrap-components",
     "description": "Laravel Bootstrap Blade components.",
     "license": "MIT",
@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "laravel/framework": "^8.0"
+        "laravel/framework": "^8.0|^9.0"
     },
     "autoload": {
         "psr-4": {

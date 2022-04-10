@@ -4,21 +4,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Font Awesome Style
-    |--------------------------------------------------------------------------
-    |
-    | This value is the default Font Awesome style to use for icons. This can
-    | be overridden at the component level for cases where you want to show a
-    | brand icon, etc. Regular and light require FA pro to be installed.
-    |
-    | Supported: "solid", "regular", "light"
-    |
-    */
-
-    'font_awesome_style' => 'solid',
-
-    /*
-    |--------------------------------------------------------------------------
     | Use With Model Trait
     |--------------------------------------------------------------------------
     |
